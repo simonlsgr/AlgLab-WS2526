@@ -60,11 +60,6 @@ def check_solution_validity(solution: Solution, database: TransplantDatabase):
         len({don.donor for don in donations}) == len(donations),
         "There is at least one donor who occurs multiple times in the solution list!",
     )
-    # check that every patient only receives once
-    CHECK(
-        len({don.recipient for don in donations}) == len(donations),
-        "There is at least one patient who occurs multiple times in the solution list!",
-    )
     # check that for every receiving recipient, exactly one associated donor donates
     for donation in donations:
         patient = donation.recipient
@@ -83,6 +78,11 @@ def check_solution_validity(solution: Solution, database: TransplantDatabase):
             f"Donor {donor.id} donates, but their associated patient ({assoc_patient.id}) does not receive a donation!",
         )
 
+    # check that every patient only receives once
+    CHECK(
+        len({don.recipient for don in donations}) == len(donations),
+        "There is at least one patient who occurs multiple times in the solution list!",
+    )
 
 @mandatory_testcase(max_runtime_s=30)
 def db_20():

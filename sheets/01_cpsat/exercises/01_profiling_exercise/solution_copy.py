@@ -21,14 +21,12 @@ logging.basicConfig(
 )
 
 
-
 def get_edge_weight(weighted_graph: ProblemInstance, u: str, v: str) -> int:
     """Retrieve the weight of the edge between two nodes."""
     for edge in weighted_graph.connections:
         if (edge.endpoint_a == u and edge.endpoint_b == v) or (
-            edge.endpoint_a == v and edge.endpoint_b == u # the data is sorted so this should never occur
-            ): 
-        
+            edge.endpoint_a == v and edge.endpoint_b == u
+        ):
             return edge.distance
     raise KeyError(f"Edge {u} - {v} not found in the graph")
 
@@ -47,38 +45,28 @@ def build_weighted_graph(instance: ProblemInstance) -> nx.Graph:
         G.add_node(vertex)
 
     # Add edges with weights to the graph
-    # for v in instance.endpoints:
-    #     for w in instance.endpoints:
-            # if v != w:  # Ensure not to check the same node
+    for v in instance.endpoints:
+        for w in instance.endpoints:
+            if v != w:  # Ensure not to check the same node
                 # Check if there is an edge between v and w
-    
-    for edge in instance.connections:
-        G.add_edge(edge.endpoint_a, edge.endpoint_b, weight=edge.distance)
-    # for v, w in itertools.combinations(instance.endpoints, 2):
-    #     if any(
-    #         ## Order doesnt matter as i assume the instances are already in lexicographical order.
-    #         (edge.endpoint_a == v and edge.endpoint_b == w)# or (edge.endpoint_a == w and edge.endpoint_b == v)
-    #         for edge in instance.connections
-    #     ):
-    #         # Get the weight of the edge and add it to the graph
-    #         weight = get_edge_weight(instance, v, w)
-    #         G.add_edge(v, w, weight=weight)
+                if any(
+                    edge.endpoint_a == v and edge.endpoint_b == w
+                    for edge in instance.connections
+                ) or any(
+                    edge.endpoint_a == w and edge.endpoint_b == v
+                    for edge in instance.connections
+                ):
+                    # Get the weight of the edge and add it to the graph
+                    weight = get_edge_weight(instance, v, w)
+                    G.add_edge(v, w, weight=weight)
 
     return G
 
 
-def distance(graph_instance: nx.Graph, u: str, v: str) -> int:
+def distance(instance: ProblemInstance, u: str, v: str) -> int:
     """Calculate the shortest path distance between two endpoints in the network."""
-    
-    return nx.shortest_path_length(graph_instance, u, v, weight="weight", method="dijkstra")
-
-def get_distance_from_distances(distances: list, u: str, v: str) -> int:
-    """Get the length of the shortest path from distances."""
-    
-    for l in distances:
-        if l[0] == u:
-            return l[1][v]
-
+    graph = build_weighted_graph(instance)
+    return nx.shortest_path_length(graph, u, v, weight="weight")
 
 class MaxPlacementsSolver:
     """
@@ -96,21 +84,7 @@ class MaxPlacementsSolver:
             endpoint: self.model.new_bool_var(endpoint)
             for endpoint in instance.approved_endpoints
         }
-        
-        ## Use only one graph instance
-        self.graph = build_weighted_graph(instance)
 
-        ## Get all possibly necessary distances
-        
-        self.distances = []
-        for node in instance.approved_endpoints:
-            info = [node]
-            info.append(nx.single_source_dijkstra_path_length(self.graph, node, weight="weight"))
-            self.distances.append(info)
-            
-        # print(self.distances)
-        
-        
         # Add constraints and objective to the model
         self._add_distance_constraints()
         self._set_objective()
@@ -124,9 +98,7 @@ class MaxPlacementsSolver:
             self.instance.approved_endpoints, 2
         ):
             if (
-                # distance(self.graph, endpoint1, endpoint2)
-                # < self.instance.min_distance_between_placements
-                get_distance_from_distances(self.distances, endpoint1, endpoint2)
+                distance(self.instance, endpoint1, endpoint2)
                 < self.instance.min_distance_between_placements
             ):
                 self.model.Add(self.vars[endpoint1] + self.vars[endpoint2] <= 1)
@@ -163,9 +135,8 @@ class MaxPlacementsSolver:
 
 if __name__ == "__main__":
     # load instance
-    instance = ProblemInstance.parse_file("instances/instance_30.json")
+    instance = ProblemInstance.parse_file("instances/instance_50.json")
     # solve instance
     solver = MaxPlacementsSolver(instance)
     solution = solver.solve()
     print(solution)
-        
