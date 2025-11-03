@@ -104,7 +104,8 @@ class CrossoverTransplantSolver:
                 
                 
                 
-            
+        
+              
         self.nodes = list(self.graph.nodes)
         self.nodes_index = {node: id for id, node in enumerate(self.nodes)}
         self.x = {}
@@ -231,7 +232,7 @@ class CrossoverTransplantSolver:
     
 if __name__ == "__main__":
     from _db_impl import SqliteTransplantDatabase
-    db = SqliteTransplantDatabase("instances/20.db")
+    db = SqliteTransplantDatabase("instances/1000.db")
     
     solver = CrossoverTransplantSolver(db)
     

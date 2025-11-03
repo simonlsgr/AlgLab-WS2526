@@ -50,6 +50,9 @@ class CycleLimitingCrossoverTransplantSolver:
         self.graph = build_recipient_donor_graph(self.database)
         self.nodes = list(self.graph.nodes)
         
+        print("number of edges: ", len(list(self.graph.edges)))
+        print("number of nodes: ",len(list(self.graph.nodes)))
+        
         
         self.cycles = list(nx.simple_cycles(self.graph, length_bound=3))
         
