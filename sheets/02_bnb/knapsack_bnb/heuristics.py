@@ -23,6 +23,7 @@ class HeuristicSolution(RelaxedSolution):
     A feasible heuristic solution.
     Inherits from `RelaxedSolution` for compatibility with the rest of the codebase.
     """
+
     def copy(self) -> "HeuristicSolution":
         """
         Return a deep copy of this heuristic solution.
@@ -32,7 +33,7 @@ class HeuristicSolution(RelaxedSolution):
             list(self.selection),
             self.upper_bound,
         )
-    
+
 
 class Heuristics(ABC):
     """
@@ -42,7 +43,9 @@ class Heuristics(ABC):
     """
 
     @abstractmethod
-    def search(self, instance: Instance, relaxed: RelaxedSolution) -> Tuple[HeuristicSolution, ...]:
+    def search(
+        self, instance: Instance, relaxed: RelaxedSolution
+    ) -> Tuple[HeuristicSolution, ...]:
         """
         Return a tuple of feasible `HeuristicSolution` objects for pruning.
         """
