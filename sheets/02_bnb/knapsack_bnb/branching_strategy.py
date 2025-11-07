@@ -60,6 +60,22 @@ class MyBranchingStrategy(BranchingStrategy):
 
     def make_branching_decisions(self, node: BnBNode) -> Tuple[BranchingDecisions, ...]:
         # placeholder: branch on the first unfixed variable
+        # first_unfixed = min(
+        #     (i for i, val in enumerate(node.branching_decisions) if val is None),
+        #     default=-1,
+        # )
+        # if first_unfixed < 0:
+        #     return ()
+        # return node.branching_decisions.split_on(first_unfixed)
+        
+        # branch on partially packed item
+        # print(node.relaxed_solution)
+        for i, val in enumerate(node.relaxed_solution.selection):
+            if val < 1.0 and val > 0 and node.branching_decisions[i] is None:
+                # print("-----------------------------------USED")
+                return node.branching_decisions.split_on(i)
+        
+        
         first_unfixed = min(
             (i for i, val in enumerate(node.branching_decisions) if val is None),
             default=-1,

@@ -10,8 +10,6 @@ def solve(instance: Instance) -> Solution:
     x = min(numbers)
     y = max(numbers)
     
-    
-    
     return Solution(
         number_a=x,
         number_b=y,

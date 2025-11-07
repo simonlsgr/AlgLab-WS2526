@@ -4,7 +4,7 @@ from knapsack_bnb import BnBSearch
 from knapsack_bnb.branching_strategy import MyBranchingStrategy
 from knapsack_bnb.heuristics import MyHeuristic
 from knapsack_bnb.instance import Instance, Item
-from knapsack_bnb.relaxation import MyRelaxationSolver
+from knapsack_bnb.relaxation import MyRelaxationSolver, NaiveRelaxationSolver
 from knapsack_bnb.search_strategy import SearchStrategy, my_search_order
 
 logging.basicConfig(
@@ -47,7 +47,7 @@ def run_first_instance():
     logging.info(
         "Finished search with %d iterations.", bnb.progress_tracker.num_iterations
     )
-    assert bnb.progress_tracker.upper_bound() == 5, "The objective value should be 5."
+    assert bnb.progress_tracker.upper_bound() == 5, f"The objective value should be 5. Not {bnb.progress_tracker.upper_bound()}"
     assert bnb.progress_tracker.lower_bound() == 5, "The bound should be 5."
     logging.info(
         "Optimal solution found, that's already good. Now checking number of iterations."
