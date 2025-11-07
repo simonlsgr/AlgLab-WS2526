@@ -40,6 +40,8 @@ class Instance(BaseModel):
     capacities: List[int] = Field(
         description="A list of the knapsack capacities. The first capacity is for the first knapsack, the second capacity for the second knapsack, and so on. It implicitly defines the number of knapsacks."
     )
+    
+    
 
 
 class Solution(BaseModel):

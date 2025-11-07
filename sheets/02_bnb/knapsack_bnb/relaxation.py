@@ -27,6 +27,7 @@ import abc
 from .branching_decisions import BranchingDecisions
 from .instance import Instance
 from .relaxed_solution import RelaxedSolution
+from .instance import Item
 
 
 class RelaxationSolver(abc.ABC):
@@ -99,15 +100,68 @@ class MyRelaxationSolver(RelaxationSolver):
     Implement any relaxation (e.g., fractional knapsack, propagation) to tighten bounds.
     """
 
+    # run_second_instance(
+
+    def sort_by(self, tup):
+        return tup[0]
+        
     def solve(
         self, instance: Instance, decisions: BranchingDecisions
     ) -> RelaxedSolution:
         # placeholder: behave like NaiveRelaxationSolver
+        
+        
+        
+        
+        value_over_weight = [item.weight / item.value for item in instance.items]
+        
         used = sum(item.weight for item, x in zip(instance.items, decisions) if x == 1)
+        enforced_weight = used
         if used > instance.capacity:
             return RelaxedSolution.create_infeasible(instance)
-        selection = [0.0 if x == 0 else 1.0 for x in decisions]
+        
+        
+        # print("------------------sorted")
+        # print(list(decisions.__iter__()))
+        selection = [0.0 if x == 0 or x is None else 1.0 for x in decisions]
+        for i, (relative_value, item) in enumerate(sorted(zip(value_over_weight, instance.items), key=self.sort_by)):
+            item_index_in_instance = instance.items.index(item)
+            if decisions[item_index_in_instance] is None:
+                used += item.weight
+                if used > instance.capacity:
+                    used -= item.weight
+                    # use item only partially if the item would fit into the knapsack if greedy would not have been used
+                    enforced_remaining_weight = instance.capacity - enforced_weight
+                    for j, (relative_value2, item2) in enumerate(sorted(zip(value_over_weight, instance.items), key=self.sort_by)):
+                        if j >= i:
+                            if item.weight <= enforced_remaining_weight:
+                                selection[instance.items.index(item2)] = (instance.capacity - used)/item2.weight
+                                break
+                    break
+                else:
+                    selection[item_index_in_instance] = 1.0
+        
+        # min_item : Item = None
+        # if len(["." for x in selection if 0 < x < 1]) == 0:
+        #     for item, decision in zip(instance.items, decisions):
+        #         if decision is None:
+        #             if min_item is None:
+        #                 min_item = item
+        #             elif min_item.weight > item.weight:
+        #                 min_item = item
+
+        # if min_item is not None:
+        #     print("-------------")
+        #     print(instance.capacity)
+        #     print(sum([item.weight*sel for item, sel in zip(instance.items, selection)]))
+        #     idx = instance.items.index(min_item)
+        #     selection[idx] = (instance.capacity - used)/min_item.weight
+        #     print(sum([item.weight*sel for item, sel in zip(instance.items, selection)]))
+            
+            
+            
+
+        # selection = [0.0 if x == 0 else 1.0 for x in decisions]
         upper = sum(item.value * sel for item, sel in zip(instance.items, selection))
         return RelaxedSolution(instance, selection, upper)
-
 
