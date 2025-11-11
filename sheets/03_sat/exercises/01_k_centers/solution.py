@@ -21,6 +21,7 @@ class Distances:
     def __init__(self, graph: nx.Graph) -> None:
         self.graph = graph
         self._distances = dict(nx.all_pairs_dijkstra_path_length(self.graph))
+        
 
     def all_vertices(self) -> Iterable[NodeId]:
         """Returns an iterable of all node IDs in the graph."""
@@ -50,18 +51,26 @@ class Distances:
 class KCenterDecisionVariant:
     def __init__(self, distances: Distances, k: int) -> None:
         self.distances = distances
-        # TODO: Implement me!
         # Solution model
+        self.k = k
+        self.solver = SATSolver("Minicard")
+        self.variables = list(self.distances.graph.nodes)
+        self.solver.add_atmost(lits=self.variables, k=self.k) 
         self._solution: list[NodeId] | None = None
+        self.status = False
 
     def limit_distance(self, limit: float) -> None:
         """Adds constraints to the SAT solver to ensure coverage within the given distance."""
         logging.info("Limiting to distance: %f", limit)
-        # TODO: Implement me!
+        for var_index, var in enumerate(self.variables):
+            self.solver.add_clause([vertex for vertex in self.distances.vertices_in_range(var, limit)])
 
     def solve(self) -> list[NodeId] | None:
         """Solves the SAT problem and returns the list of selected nodes, if feasible."""
-        # TODO: Implement me!
+        
+        
+        self.status = self.solver.solve()
+        self._solution = self.solver.get_model()
         return self._solution
 
     def get_solution(self) -> list[NodeId]:
@@ -81,15 +90,30 @@ class KCentersSolver:
         The graph may not be complete, and edge weights are used to represent distances.
         """
         self.graph = graph
-        # TODO: Implement me!
+        self.distances = Distances(self.graph)
+        
 
     def solve_heur(self, k: int) -> list[NodeId]:
         """
         Calculate a heuristic solution to the k-centers problem.
         Returns the k selected centers as a list of node IDs.
         """
-        # TODO: Implement me!
-        centers = None
+        if k == 0:
+            return None
+        
+        centers = [list(self.distances.graph.nodes)[0]]
+        for i in range(k-1):
+            selected = False
+            max_dist = self.distances.max_dist(centers)
+            for u in centers:
+                for v in self.distances.graph.nodes:
+                    if self.distances.dist(u, v) == max_dist:
+                        centers.append(v)
+                        selected = True
+                        break
+                if selected:
+                    break
+            
         return centers
 
 
@@ -103,4 +127,44 @@ class KCentersSolver:
         obj = self.distances.max_dist(centers)
 
         # TODO: Implement me!
-        return centers
+        decision_solver = KCenterDecisionVariant(self.distances, k)
+        bounds = list((self.distances.sorted_distances()))
+        first_index = 0
+        # print(first_index)
+        # for index, bound in enumerate(bounds):
+        #     if bound > obj:
+        #         first_index = index-1 if index > 0 else 0
+        #         break
+        # print(first_index)
+        index = bisect.bisect_left(bounds, obj)
+        
+        solution = None
+        while index >= 0:
+            decision_solver.limit_distance(bounds[index])
+            decision_solver.solve()
+            if decision_solver.status:
+                solution = decision_solver.get_solution()
+                centers_solution = [center for center in solution if center > 0]
+                new_index = bisect.bisect_left(bounds, self.distances.max_dist(centers_solution))
+                index = min(index - 1, new_index) 
+            else:
+                break
+        # implement binary search to reduce the limiting constraints
+        # for i in range(first_index, len(bounds)):
+        #     decision_solver.limit_distance(bounds[i])
+        #     decision_solver.solve()
+        #     if decision_solver.status:
+        #         solution = decision_solver.get_solution()
+        #     else:
+        #         break
+        return [center for center in solution if center > 0]
+
+if __name__ == "__main__":
+    import pathlib
+    import pickle
+    CWD = pathlib.Path(__file__).parent
+    instance_path: pathlib.Path = CWD / "./instances/att48.pickle"
+    with instance_path.open("rb") as f:
+        graph: nx.Graph = pickle.load(f)
+    dists = Distances(graph)
+    KCentersSolver(graph).solve(4)
