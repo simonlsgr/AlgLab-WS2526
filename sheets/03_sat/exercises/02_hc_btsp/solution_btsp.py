@@ -34,11 +34,13 @@ class BottleneckTSPSolver:
         several algorithms that automatically make use of this value.
         Check the networkx documentation for more information!
         """
-        self.graph = graph
-        # TODO: Implement me!
+        self.graph : nx.Graph = graph
+        self.sorted_weights = sorted(list(nx.get_edge_attributes(self.graph, "weight").values()))
+        
 
     def lower_bound(self) -> float:
         # TODO: Implement me!
+        return 0
 
     def optimize_bottleneck(
         self,
@@ -50,4 +52,33 @@ class BottleneckTSPSolver:
         """
 
         self.timer = Timer(time_limit)
-        # TODO: Implement me!
+        upper_i = len(self.sorted_weights) -1
+        lower_i = 0
+        index = 0
+        last_sol = "X"
+        current_sol = "X"
+        while lower_i <= upper_i:
+            
+            index = lower_i + ((upper_i - lower_i) // 2)
+            
+            edges_for_graph = [edge for edge in self.graph.edges if self.graph.edges[edge]["weight"] <= self.sorted_weights[index]]
+            graph = nx.Graph(edges_for_graph)
+            current_sol = HamiltonianCycleModel(graph).solve()
+            if current_sol is None:
+                lower_i = index +1
+            else:
+                upper_i = index - 1
+                last_sol = current_sol
+        
+        return last_sol
+        
+
+if __name__ == "__main__":
+    import pathlib
+    import pickle
+    CWD = pathlib.Path(__file__).parent
+    filepath = CWD / "./instances/att48.tsp.pickle"
+    with filepath.open("rb") as f:
+        graph = pickle.load(f)
+        
+    BottleneckTSPSolver(graph).optimize_bottleneck()
