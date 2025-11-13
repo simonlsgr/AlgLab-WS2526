@@ -23,6 +23,7 @@ so that:
 """
 
 import abc
+import math
 
 from .branching_decisions import BranchingDecisions
 from .instance import Instance
@@ -119,6 +120,7 @@ class MyRelaxationSolver(RelaxationSolver):
         enforced_weight = used
         if used > instance.capacity:
             return RelaxedSolution.create_infeasible(instance)
+        round = not any([False if int(i.value) == i.value else True for i in instance.items])
         
         
         # print("------------------sorted")
@@ -135,7 +137,10 @@ class MyRelaxationSolver(RelaxationSolver):
                     for j, (relative_value2, item2) in enumerate(sorted(zip(value_over_weight, instance.items), key=self.sort_by)):
                         if j >= i:
                             if item.weight <= enforced_remaining_weight:
-                                selection[instance.items.index(item2)] = (instance.capacity - used)/item2.weight
+                                if round:
+                                    selection[instance.items.index(item2)] = (instance.capacity - used)/item2.weight
+                                else:
+                                    selection[instance.items.index(item2)] = (instance.capacity - used)/item2.weight
                                 break
                     break
                 else:
@@ -162,6 +167,10 @@ class MyRelaxationSolver(RelaxationSolver):
             
 
         # selection = [0.0 if x == 0 else 1.0 for x in decisions]
+        
         upper = sum(item.value * sel for item, sel in zip(instance.items, selection))
+        
+        # if round:
+        #     upper = math.floor(upper)
         return RelaxedSolution(instance, selection, upper)
 

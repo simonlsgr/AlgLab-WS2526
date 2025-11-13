@@ -65,6 +65,7 @@ class MyHeuristic(Heuristics):
         #     heuristic_sol = HeuristicSolution(instance, relaxed.selection, relaxed.upper_bound)
         #     return (heuristic_sol,)
         # return ()
+
         selection = relaxed.selection
         for i, selected in enumerate(relaxed.selection):
             if 0 < selected < 1: # partially packed
