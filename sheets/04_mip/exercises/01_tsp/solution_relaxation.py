@@ -35,7 +35,24 @@ class GurobiTspRelaxationSolver:
         )
         logging.info("Implementing subtour elimination with >= %d", k)
         self._model = gp.Model()
-        # TODO: Implement me!
+        self._model = gp.Model()
+        self.solution = None
+        self.solution_value = 0
+        
+        # init vars
+        for edge in self.graph.edges:
+            self.graph.edges[edge]["var"] = self._model.addVar(vtype=gp.GRB.CONTINUOUS, name=f"edge{str(edge)}", lb=0, ub=1)
+        
+        
+        # obj minimize weight of used edges
+        self._model.setObjective(gp.quicksum(self.graph.edges[edge]["var"] * self.graph.edges[edge]["weight"] for edge in self.graph.edges), gp.GRB.MINIMIZE)
+        
+        # constraint deg = 2
+        for v in self.graph.nodes:
+            self._model.addConstr(gp.quicksum(self.graph.edges[edge]["var"] for edge in self.graph.edges(v)) == 2)
+        
+        # constraint cycle
+        self._model.addConstr(gp.quicksum(self.graph.edges[edge]["var"] for edge in self.graph.edges) == len(self.graph.nodes))
 
     def add_lower_bound(self, lb: float) -> None:
         """
@@ -45,15 +62,15 @@ class GurobiTspRelaxationSolver:
         # Objective
         def dist(u, v):
             return self.graph.edges[u, v]["weight"]
-
-        tour_cost = gp.quicksum(dist(v, w) * x for (v, w), x in self._vars)
+        
+        tour_cost = gp.quicksum(self.graph.edges[edge]["weight"] * self.graph.edges[edge]["var"] for edge in self.graph.edges)
         self._model.addConstr(tour_cost >= lb)
 
     def get_lower_bound(self) -> float:
         """
         Return the current lower bound.
         """
-        # TODO: Implement me!
+        return self._model.ObjBound if self._model.ObjBound else 0
 
     def get_solution(self) -> typing.Optional[nx.Graph]:
         """
@@ -69,13 +86,13 @@ class GurobiTspRelaxationSolver:
         graph.add_edge(1, 2, x=1.0)
         ```
         """
-        # TODO: Implement me!
+        return self.solution
 
     def get_objective(self) -> typing.Optional[float]:
         """
         Return the objective value of the last solution.
         """
-        # TODO: Implement me!
+        return self.solution_value
 
     def solve(self) -> None:
         """
@@ -86,4 +103,30 @@ class GurobiTspRelaxationSolver:
         # Set parameters for the solver.
         self._model.Params.LogToConsole = 1
 
-        # TODO: Implement me!
+        while True:
+            self._model.optimize()
+            
+            if self._model.status == gp.GRB.INFEASIBLE:
+                break
+            if self._model.status == gp.GRB.OPTIMAL:
+                
+                edges_in_relaxation = []
+                for edge in self.graph.edges:
+                    if self.graph.edges[edge]["var"].X > .01:
+                        edges_in_relaxation.append(edge)
+                graph = nx.Graph(edges_in_relaxation)
+                
+                for edge in graph.edges:
+                    graph.edges[edge]["weight"] = self.graph.edges[edge]["weight"]
+                    graph.edges[edge]["x"] = self.graph.edges[edge]["var"].X
+                
+                components = list(nx.connected_components(graph))
+                
+                if len(components) == 1:
+                    self.solution = graph
+                    self.solution_value = self._model.ObjVal
+                    break
+                
+                for component in components:
+                    necessary_edges = [self.graph.edges[u, v]["var"] for (u,v) in self.graph.edges if (u in component and v not in component) or (u not in component and v in component)]
+                    self._model.addConstr(gp.quicksum(necessary_edges) >= self.k)
