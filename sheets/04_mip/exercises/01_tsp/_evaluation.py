@@ -116,7 +116,7 @@ from solution_dantzig import GurobiTspSolver
 from solution_relaxation import GurobiTspRelaxationSolver
 
 samples = []
-n = 200
+n = 50
 
 
 def get_sample(n=200):
@@ -191,4 +191,4 @@ def get_sample(n=200):
         f"Objective value: {objective_value}, Linear relaxation k=2 value: {linear_relaxation_value_k2}, Overlap: {overlap_k2}/{n}"
     )
 
-    samples.append((objective_value, linear_relaxation_value_k2, overlap_k2))
+    samples.append((objective_value, linear_relaxation_value_k2, overlap_k2, overlap_lb))
