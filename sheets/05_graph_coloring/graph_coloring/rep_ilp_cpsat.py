@@ -26,16 +26,16 @@ class REPILPSolverCPSat:
         for v in self.nodes:
             for w in (list(nx.non_neighbors(self.graph, v)) + [v]):
                 if self.graph.nodes[v]["index"] >= self.graph.nodes[w]["index"]:
-                    # print(self.graph.nodes[v]["index"], self.graph.nodes[w]["index"])
                     self.x[v, w] = self.model.NewBoolVar(f"x_{v}_{w}")
+                else:
+                    self.x[v, w] = 0
         
         
         # every node chooses exactly one representative
         for v in self.nodes:
             self.model.Add(sum([self.x[v, w] for w in (list(nx.non_neighbors(self.graph, v)) + [v]) if (v, w) in self.x]) == 1)
     
-        # for entry in self.x:
-        #     print(entry)
+        
         # 1. if u and v are adjacent they can not select the same representative
         # 2. if v marks w as representative then w must be a a representative
         for w in self.nodes:
@@ -44,8 +44,7 @@ class REPILPSolverCPSat:
             for u in V_minus_N_w:
                 for v in V_minus_N_w:
                     if self.graph.has_edge(u, v):
-                        if (u, w) in self.x and (v, w) in self.x and (w, w) in self.x:
-                            self.model.Add(self.x[u, w] + self.x[v, w] <= self.x[w, w])
+                        self.model.Add(self.x[u, w] + self.x[v, w] <= self.x[w, w])
         
         
         self.model.Minimize(sum(self.x[v, v] for v in self.nodes))

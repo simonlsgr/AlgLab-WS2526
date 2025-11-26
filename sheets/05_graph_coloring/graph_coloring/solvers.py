@@ -10,7 +10,7 @@ from .rep_ilp_gurobi import REPILPSolverGurobi
 from .not_equal_cpsat import NotEqualSolver
 from .all_different_cpsat import AllDifferentSolver
 
-from .sat_pysat import PYSATSolver
+from .sat_pysat import PYSATDecisionVariant, PYSATSolver
 
 __all__ = [
     "ASSILPSolverCPSat",
@@ -21,5 +21,6 @@ __all__ = [
     "REPILPSolverGurobi",
     "NotEqualSolver",
     "AllDifferentSolver",
+    "PYSATDecisionVariant",
     "PYSATSolver"
 ]
