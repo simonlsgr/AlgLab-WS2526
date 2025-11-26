@@ -1,5 +1,7 @@
 {
   "source": "https://mat.tepper.cmu.edu/COLOR/instances.html",
+  "jean.col": 10,
+  "huck.col": 11,
   "flat300_26_0.col.b": 26,
   "zeroin.i.1.col": 49,
   "fpsol2.i.1.col": 65,
