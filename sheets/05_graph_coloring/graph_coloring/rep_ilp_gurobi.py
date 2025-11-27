@@ -2,12 +2,17 @@
 
 import gurobipy as gp
 import networkx as nx
+import math
+
+from utils.data_schema import Solution, ModelStatus
 
 class REPILPSolverGurobi:
     """Representative-based ILP Formulation (REP)"""
     
     def __init__(self, instance: nx.Graph):
         self.solution_generated = False
+        
+        self.status = ModelStatus.UNKWOWN
         
             
         self.graph = instance
@@ -53,7 +58,7 @@ class REPILPSolverGurobi:
         )
         
     
-    def generate_solution(self):
+    def generate_graph(self):
         color = 1
         for v in self.nodes:
             if self.x[v, v].X:
@@ -65,13 +70,17 @@ class REPILPSolverGurobi:
                 if var.X:
                     self.graph.nodes[u]["color"] = self.graph.nodes[v]["color"]
     
-    def get_solution(self):
+    def get_graph(self):
         if not self.solution_generated:
-            self.generate_solution()
+            self.generate_graph()
         
         return self.graph
     
-    def solve(self):
+    def solve(self, timelimit: float = math.inf):
+        
+        
+        if timelimit < math.inf:
+            self.model.Params.TimeLimit = timelimit
         
         self.model.optimize()
         used_colors = 0
@@ -83,5 +92,17 @@ class REPILPSolverGurobi:
         
         self.bound = used_colors
         
-        return self.bound
+        gp_status = self.model.Status
+        if gp_status == gp.GRB.OPTIMAL or self.model.SolCount > 0:
+            self.bound = used_colors
+            self.generate_graph()
+            if self.model.SolCount > 0:
+                self.status = ModelStatus.FEASIBLE
+            elif gp_status == gp.GRB.OPTIMAL:
+                self.status = ModelStatus.OPTIMAL
+        else:
+            self.bound = math.inf
+            self.graph = nx.Graph()
+        
+        return Solution(graph=self.graph, colors=self.bound, status=self.status)
         

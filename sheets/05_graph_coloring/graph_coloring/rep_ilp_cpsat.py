@@ -1,7 +1,10 @@
 
 
-from ortools.sat.python.cp_model import FEASIBLE, OPTIMAL, CpModel, CpSolver, LinearExpr
+from ortools.sat.python.cp_model import FEASIBLE as CPFEASIBLE, OPTIMAL as CPOPTIMAL, CpModel, CpSolver, LinearExpr
 import networkx as nx
+import math
+
+from utils.data_schema import Solution, ModelStatus
 
 class REPILPSolverCPSat:
     """Representative-based ILP Formulation (REP)"""
@@ -9,6 +12,7 @@ class REPILPSolverCPSat:
     def __init__(self, instance: nx.Graph):
         self.solution_generated = False
         
+        self.status = ModelStatus.UNKWOWN
             
         self.graph = instance
         self.nodes = list(self.graph.nodes)
@@ -51,7 +55,7 @@ class REPILPSolverCPSat:
         self.solver = CpSolver()
         self.solver.parameters.log_search_progress = True
     
-    def generate_solution(self):
+    def generate_graph(self):
         color = 1
         for v in self.nodes:
             if self.solver.Value(self.x[v, v]):
@@ -62,15 +66,18 @@ class REPILPSolverCPSat:
             if self.solver.Value(var):
                 self.graph.nodes[u]["color"] = self.graph.nodes[v]["color"]
     
-    def get_solution(self):
+    def get_graph(self):
         if not self.solution_generated:
-            self.generate_solution()
+            self.generate_graph()
         
         return self.graph
     
-    def solve(self):
+    def solve(self, timelimit: float = math.inf):
         
-        status = self.solver.Solve(self.model)
+        if timelimit < math.inf:
+            self.solver.parameters.max_time_in_seconds = timelimit
+        
+        cp_status = self.solver.Solve(self.model)
         used_colors = 0
         for w in self.nodes:
             var = self.solver.Value(self.x[w, w])
@@ -78,7 +85,18 @@ class REPILPSolverCPSat:
                 used_colors += 1
             
         
-        self.bound = used_colors
         
-        return self.bound
+        
+        if cp_status in [CPFEASIBLE, CPOPTIMAL]:
+            self.bound = used_colors
+            self.generate_graph()
+            if cp_status == CPFEASIBLE:
+                self.status = ModelStatus.FEASIBLE        
+            elif cp_status == CPOPTIMAL:
+                self.status = ModelStatus.OPTIMAL
+        else:
+            self.bound = math.inf
+            self.graph = nx.Graph()
+        
+        return Solution(graph=self.graph, colors=self.bound, status=self.status)
         

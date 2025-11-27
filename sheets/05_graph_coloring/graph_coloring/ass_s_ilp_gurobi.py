@@ -1,12 +1,17 @@
 
 import gurobipy as gp
 import networkx as nx
+import math
+
+from utils.data_schema import Solution, ModelStatus
 
 class ASS_S_ILPSolverGurobi:
     """Assignment-based ILP Formulation with Symmetry Breaking (ASS-S)"""
     
     def __init__(self, instance: nx.Graph, number_of_colors: int = -1):
         self.solution_generated = False
+        
+        self.status = ModelStatus.UNKWOWN
         
         self.number_of_colors = number_of_colors
         if self.number_of_colors == -1:
@@ -61,21 +66,24 @@ class ASS_S_ILPSolverGurobi:
         )
         
     
-    def generate_solution(self):
+    def generate_graph(self):
         for node in self.nodes:
             for color in range(self.number_of_colors):
                 if self.graph.nodes[node][color].X > .5:
                     self.graph.nodes[node]["color"] = color
                     break
     
-    def get_solution(self):
+    def get_graph(self):
         if not self.solution_generated:
-            self.generate_solution()
+            self.generate_graph()
         
         return self.graph
     
         
-    def solve(self):
+    def solve(self, timelimit: float = math.inf):
+        
+        if timelimit < math.inf:
+            self.model.Params.TimeLimit = timelimit
         
         self.model.optimize()
         
@@ -85,13 +93,24 @@ class ASS_S_ILPSolverGurobi:
             if var > .5:
                 used_colors += 1
                 
-        for node in self.nodes:
-            used_colors_in_node = 0
-            for color in range(self.number_of_colors):
-                used_colors_in_node += 1 if self.graph.nodes[node][color].X > .5 else 0
-            assert (used_colors_in_node == 1)
+        # for node in self.nodes:
+        #     used_colors_in_node = 0
+        #     for color in range(self.number_of_colors):
+        #         used_colors_in_node += 1 if self.graph.nodes[node][color].X > .5 else 0
+        #     assert (used_colors_in_node == 1)
             
         
-        self.bound = used_colors
+        gp_status = self.model.Status
+        if gp_status == gp.GRB.OPTIMAL or self.model.SolCount > 0:
+            self.bound = used_colors
+            self.generate_graph()
+            if self.model.SolCount > 0:
+                self.status = ModelStatus.FEASIBLE
+            elif gp_status == gp.GRB.OPTIMAL:
+                self.status = ModelStatus.OPTIMAL
+        else:
+            self.bound = math.inf
+            self.graph = nx.Graph()
+            
         
-        return self.bound
+        return Solution(graph=self.graph, colors=self.bound, status=self.status)

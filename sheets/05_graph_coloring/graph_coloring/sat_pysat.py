@@ -2,15 +2,23 @@
 
 from pysat.solvers import Solver as SATSolver
 import networkx as nx
+import math
+from threading import Timer as ThreadTimer
+from utils._timer import Timer
 
+from utils.data_schema import Solution, ModelStatus
 
 class PYSATDecisionVariant:
-    def __init__(self, instance: nx.Graph, k: int):
+    def __init__(self, instance: nx.Graph, k: int, timelimit: float = math.inf):
         self.solver = SATSolver("Minicard")
         
         self.number_of_colors = k
         self.solver = SATSolver("Minicard")
         
+        def interrupt(s):
+            s.interrupt()
+        if timelimit < math.inf:
+            self.timer = ThreadTimer(timelimit, interrupt, [self.solver])
             
         self.graph = instance
         self.nodes = list(self.graph.nodes)
@@ -41,10 +49,12 @@ class PYSATDecisionVariant:
     
     def solve(self):
         
-        self.status = self.solver.solve()
+        
+        
+        self.status = self.solver.solve_limited(expect_interrupt=True)
         self.solution = self.solver.get_model()
         
-        return self.solution
+        return self.solution, self.status
 
     
 class PYSATSolver:
@@ -70,7 +80,7 @@ class PYSATSolver:
     def x(self, node_id: int, color: int) -> str:
         return node_id*self.bound+color
     
-    def generate_solution(self):
+    def generate_graph(self):
         for i, node in enumerate(self.nodes):
             for color in range(1, self.number_of_colors+1):
                 if self.x(self.graph.nodes[node]["v_index"], color) in self.solution:
@@ -78,27 +88,40 @@ class PYSATSolver:
                     break
             
     
-    def get_solution(self):
+    def get_graph(self):
         if not self.solution_generated:
-            self.generate_solution()
+            self.generate_graph()
         
         return self.graph
     
-    def solve(self):
+    def solve(self, timelimit: float = math.inf):
     
+        self.timer = Timer(timelimit)
+        
         self.solution = None
+        sat_status = None
         for k in range(self.number_of_colors, 0, -1):
-            decision_solver = PYSATDecisionVariant(self.graph.copy(), k)
-            decision_solution = decision_solver.solve()
+            if self.timer.is_out_of_time():
+                break
+            decision_solver = PYSATDecisionVariant(self.graph.copy(), k, self.timer.remaining())
+            decision_solution, current_status = decision_solver.solve()
             
             if decision_solver.status:
                 self.solution = decision_solution
                 self.bound = k
+                sat_status = current_status
             else:
                 break
         
-        # print(self.solution)
-        return self.bound
+        status = ModelStatus.UNKWOWN
+        if sat_status:
+            status = ModelStatus.FEASIBLE
+            self.generate_graph()
+        else:
+            status = ModelStatus.OTHER
+            
+        
+        return Solution(graph=self.graph, colors=self.bound, status=self.status)
         
         
                 
