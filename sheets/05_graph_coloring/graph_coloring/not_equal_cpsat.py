@@ -5,8 +5,9 @@ import networkx as nx
 import math
 
 from utils.data_schema import Solution, ModelStatus
+from graph_coloring.gc_solver import GCSolver
 
-class NotEqualSolver:
+class NotEqualSolver(GCSolver):
     """Constraint Programming: ≠-Formulation (CP≠)"""
     
     def __init__(self, instance: nx.Graph, number_of_colors: int = -1):

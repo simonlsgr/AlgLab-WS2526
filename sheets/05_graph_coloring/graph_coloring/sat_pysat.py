@@ -7,8 +7,9 @@ from threading import Timer as ThreadTimer
 from utils._timer import Timer
 
 from utils.data_schema import Solution, ModelStatus
+from graph_coloring.gc_solver import GCSolver
 
-class PYSATDecisionVariant:
+class PYSATDecisionVariant():
     def __init__(self, instance: nx.Graph, k: int, timelimit: float = math.inf):
         self.solver = SATSolver("Minicard")
         
@@ -57,9 +58,11 @@ class PYSATDecisionVariant:
         return self.solution, self.status
 
     
-class PYSATSolver:
+class PYSATSolver(GCSolver):
     def __init__(self, instance: nx.Graph, number_of_colors: int = -1):
         self.solution_generated = False
+        
+        self.status = ModelStatus.UNKWOWN
         
         self.number_of_colors = number_of_colors
         if self.number_of_colors == -1:
@@ -113,12 +116,12 @@ class PYSATSolver:
             else:
                 break
         
-        status = ModelStatus.UNKWOWN
+        
         if sat_status:
-            status = ModelStatus.FEASIBLE
+            self.status = ModelStatus.FEASIBLE
             self.generate_graph()
         else:
-            status = ModelStatus.OTHER
+            self.status = ModelStatus.OTHER
             
         
         return Solution(graph=self.graph, colors=self.bound, status=self.status)

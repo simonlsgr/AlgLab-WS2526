@@ -12,6 +12,8 @@ from .all_different_cpsat import AllDifferentSolver
 
 from .sat_pysat import PYSATDecisionVariant, PYSATSolver
 
+from .gc_solver import GCSolver
+
 __all__ = [
     "ASSILPSolverCPSat",
     "ASS_S_ILPSolverCPSat",
@@ -22,5 +24,7 @@ __all__ = [
     "NotEqualSolver",
     "AllDifferentSolver",
     "PYSATDecisionVariant",
-    "PYSATSolver"
+    "PYSATSolver",
+    "GCSolver"
 ]
+

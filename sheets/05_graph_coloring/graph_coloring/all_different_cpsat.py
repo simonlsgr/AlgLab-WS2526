@@ -5,8 +5,9 @@ import networkx as nx
 import math
 
 from utils.data_schema import Solution, ModelStatus
+from graph_coloring.gc_solver import GCSolver
 
-class AllDifferentSolver:
+class AllDifferentSolver(GCSolver):
     """Constraint Programming: AllDifferent Formulation (CP-AllDiff)"""
     
     def __init__(self, instance: nx.Graph, number_of_colors: int = -1):

@@ -5,8 +5,9 @@ import networkx as nx
 import math
 
 from utils.data_schema import Solution, ModelStatus
+from graph_coloring.gc_solver import GCSolver
 
-class ASSILPSolverCPSat:
+class ASSILPSolverCPSat(GCSolver):
     """Assignment-Based ILP Formulation (ASS)"""
     
     def __init__(self, instance: nx.Graph, number_of_colors: int = -1):

@@ -5,11 +5,12 @@ import networkx as nx
 import math
 
 from utils.data_schema import Solution, ModelStatus
+from graph_coloring.gc_solver import GCSolver
 
-class REPILPSolverGurobi:
+class REPILPSolverGurobi(GCSolver):
     """Representative-based ILP Formulation (REP)"""
     
-    def __init__(self, instance: nx.Graph):
+    def __init__(self, instance: nx.Graph, *args):
         self.solution_generated = False
         
         self.status = ModelStatus.UNKWOWN

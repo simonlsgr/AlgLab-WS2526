@@ -3,9 +3,11 @@
 from ortools.sat.python.cp_model import FEASIBLE as CPFEASIBLE, OPTIMAL as CPOPTIMAL, CpModel, CpSolver, LinearExpr
 import networkx as nx
 import math
-from utils.data_schema import Solution, ModelStatus
 
-class ASS_S_ILPSolverCPSat:
+from utils.data_schema import Solution, ModelStatus
+from graph_coloring.gc_solver import GCSolver
+
+class ASS_S_ILPSolverCPSat(GCSolver):
     """Assignment-based ILP Formulation with Symmetry Breaking (ASS-S)"""
     
     def __init__(self, instance: nx.Graph, number_of_colors: int = -1):
