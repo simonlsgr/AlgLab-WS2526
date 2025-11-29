@@ -14,21 +14,6 @@ from tests.tests import solve_instance_and_compare_bound_and_check_coloring
 
 
 
-
-# cumulative_runtime = 240
-# @mandatory_testcase(max_runtime_s=cumulative_runtime)
-# def all_solvers_le450_5d():
-    
-#     for solver_name in all_solvers:
-#         if solver_name not in ["GCSolver", "PYSATDecisionVariant"]:
-#             solver = globals()[solver_name]
-    
-#         solve_instance_and_compare_bound_and_check_coloring("le450_5d.col", solver, int(cumulative_runtime/(len(all_solvers)-2)))
-
-# runtime = 60
-# @mandatory_testcase(max_runtime_s=runtime)
-# def all_different_le450_5d():
-#     solve_instance_and_compare_bound_and_check_coloring("le450_5d.col", AllDifferentSolver, runtime)
     
 
 runtime = 120

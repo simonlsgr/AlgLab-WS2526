@@ -1,5 +1,4 @@
 
-import math
 from networkx import Graph
 
 from tests._alglab_utils import *
@@ -10,7 +9,7 @@ from utils.coloring import is_valid_coloring
 from utils.data_schema import ModelStatus
 
 from graph_coloring.solvers import GCSolver
-from heuristics.dsatur import DSATUR
+from graph_coloring.heuristics import DSATUR
 
 def solve_graph_and_compare_bound_and_check_coloring(
     graph: Graph, lower_bound: int, Solver: GCSolver, runtime: int | float

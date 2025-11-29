@@ -1,14 +1,10 @@
 
-import json
-import pathlib
-import math
+
 import networkx as nx
 import random
 
 
-from tests._alglab_utils import CHECK, main, mandatory_testcase
-from utils.load_instance import load_instance
-from utils.coloring import is_valid_coloring
+from tests._alglab_utils import main, mandatory_testcase
 
 from graph_coloring.solvers import __all__ as all_solvers
 from graph_coloring.solvers import *
@@ -26,10 +22,6 @@ def make_test(graph, lower_bound, solver, test_name):
     return mandatory_testcase(max_runtime_s=runtime)(test)
 
 
-with open("./tests/test_instances.json", "r") as f:
-    
-    instances = json.load(f)
-    instances = instances["instances"]
     
 
 
