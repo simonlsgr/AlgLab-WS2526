@@ -1,5 +1,5 @@
 import networkx as nx
-from heuristics.naive_greedy import NaiveGreedyGraphColoringHeuristic
+from graph_coloring.heuristics import NaiveGreedyGraphColoringHeuristic
 
 class MultiStartGreedyGraphColoringHeuristic:
     def __init__(self, instance: nx.Graph, iterations: int = 5):
