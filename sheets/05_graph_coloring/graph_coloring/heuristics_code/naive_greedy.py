@@ -2,7 +2,7 @@ import networkx as nx
 import random
 
 class NaiveGreedyGraphColoringHeuristic:
-    def __init__(self, instance: nx.Graph, random_order: bool = False):
+    def __init__(self, instance: nx.Graph, random_order: bool = True):
         self.order = list(range(0,len(list(instance.nodes()))))
         if random_order:
             random.shuffle(self.order)

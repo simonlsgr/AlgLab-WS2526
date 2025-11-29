@@ -4,10 +4,10 @@ import networkx as nx
 import math
 
 from utils.data_schema import Solution, ModelStatus
-from graph_coloring.gc_solver import GCSolver
+from graph_coloring.solvers_code.gc_solver import GCSolver
 
-class ASS_S_ILPSolverGurobi(GCSolver):
-    """Assignment-based ILP Formulation with Symmetry Breaking (ASS-S)"""
+class ASSILPSolverGurobi(GCSolver):
+    """Assignment-Based ILP Formulation (ASS)"""
     
     def __init__(self, instance: nx.Graph, number_of_colors: int = -1):
         self.solution_generated = False
@@ -54,18 +54,10 @@ class ASS_S_ILPSolverGurobi(GCSolver):
             self.model.addConstr(gp.quicksum([self.graph.nodes[node][color] for color in range(self.number_of_colors)]) == 1)
             
         
-        # breaking symmetries
-        for color in range(self.number_of_colors):
-            self.model.addConstr(
-                self.color_vars[color] <= gp.quicksum([self.graph.nodes[node][color] for node in self.nodes])
-            )
-        
-        
         self.model.setObjective(
             gp.quicksum([color_var for color_var in self.color_vars.values()]),
             gp.GRB.MINIMIZE
         )
-        
     
     def generate_graph(self):
         for node in self.nodes:
@@ -82,9 +74,9 @@ class ASS_S_ILPSolverGurobi(GCSolver):
     
         
     def solve(self, timelimit: float = math.inf):
-        
         if timelimit < math.inf:
             self.model.Params.TimeLimit = timelimit
+        
         
         self.model.optimize()
         
@@ -101,6 +93,7 @@ class ASS_S_ILPSolverGurobi(GCSolver):
         #     assert (used_colors_in_node == 1)
             
         
+        
         gp_status = self.model.Status
         if gp_status == gp.GRB.OPTIMAL or self.model.SolCount > 0:
             self.bound = used_colors
@@ -112,6 +105,7 @@ class ASS_S_ILPSolverGurobi(GCSolver):
         else:
             self.bound = math.inf
             self.graph = nx.Graph()
-            
         
         return Solution(graph=self.graph, colors=self.bound, status=self.status)
+        
+        

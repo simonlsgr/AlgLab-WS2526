@@ -5,10 +5,10 @@ import networkx as nx
 import math
 
 from utils.data_schema import Solution, ModelStatus
-from graph_coloring.gc_solver import GCSolver
+from graph_coloring.solvers_code.gc_solver import GCSolver
 
-class ASSILPSolverCPSat(GCSolver):
-    """Assignment-Based ILP Formulation (ASS)"""
+class ASS_S_ILPSolverCPSat(GCSolver):
+    """Assignment-based ILP Formulation with Symmetry Breaking (ASS-S)"""
     
     def __init__(self, instance: nx.Graph, number_of_colors: int = -1):
         self.solution_generated = False
@@ -51,7 +51,12 @@ class ASSILPSolverCPSat(GCSolver):
         # one color has to be used in one node
         for node in self.nodes:
             self.model.Add(sum([self.graph.nodes[node][color] for color in range(self.number_of_colors)]) == 1)
-        
+            
+        # breaking symmetries
+        for color in range(self.number_of_colors):
+            self.model.Add(
+                self.color_vars[color] <= sum([self.graph.nodes[node][color] for node in self.nodes])
+            )
         
         
         self.model.Minimize(sum([color_var for color_var in self.color_vars.values()]))
@@ -72,16 +77,17 @@ class ASSILPSolverCPSat(GCSolver):
         return self.graph
     
     def solve(self, timelimit: float = math.inf):
+        
         if timelimit < math.inf:
             self.solver.parameters.max_time_in_seconds = timelimit
+            
         cp_status = self.solver.Solve(self.model)
         used_colors = 0
         for color in range(self.number_of_colors):
             var = self.solver.Value(self.color_vars[color])
             if var:
                 used_colors += 1
-        
-        
+                
         # for node in self.nodes:
         #     used_colors_in_node = 0
         #     for color in range(self.number_of_colors):

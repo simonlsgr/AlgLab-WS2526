@@ -5,7 +5,7 @@ import networkx as nx
 import math
 
 from utils.data_schema import Solution, ModelStatus
-from graph_coloring.gc_solver import GCSolver
+from graph_coloring.solvers_code.gc_solver import GCSolver
 
 class NotEqualSolver(GCSolver):
     """Constraint Programming: ≠-Formulation (CP≠)"""

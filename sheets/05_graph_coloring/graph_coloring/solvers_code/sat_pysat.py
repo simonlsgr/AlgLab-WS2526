@@ -7,7 +7,7 @@ from threading import Timer as ThreadTimer
 from utils._timer import Timer
 
 from utils.data_schema import Solution, ModelStatus
-from graph_coloring.gc_solver import GCSolver
+from graph_coloring.solvers_code.gc_solver import GCSolver
 
 class PYSATDecisionVariant():
     def __init__(self, instance: nx.Graph, k: int, timelimit: float = math.inf):
@@ -20,6 +20,7 @@ class PYSATDecisionVariant():
             s.interrupt()
         if timelimit < math.inf:
             self.timer = ThreadTimer(timelimit, interrupt, [self.solver])
+            self.timer.start()
             
         self.graph = instance
         self.nodes = list(self.graph.nodes)

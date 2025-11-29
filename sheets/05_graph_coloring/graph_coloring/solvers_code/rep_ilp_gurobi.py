@@ -1,19 +1,20 @@
 
 
-from ortools.sat.python.cp_model import FEASIBLE as CPFEASIBLE, OPTIMAL as CPOPTIMAL, CpModel, CpSolver, LinearExpr
+import gurobipy as gp
 import networkx as nx
 import math
 
 from utils.data_schema import Solution, ModelStatus
-from graph_coloring.gc_solver import GCSolver
+from graph_coloring.solvers_code.gc_solver import GCSolver
 
-class REPILPSolverCPSat(GCSolver):
+class REPILPSolverGurobi(GCSolver):
     """Representative-based ILP Formulation (REP)"""
     
     def __init__(self, instance: nx.Graph, *args):
         self.solution_generated = False
         
         self.status = ModelStatus.UNKWOWN
+        
             
         self.graph = instance
         self.nodes = list(self.graph.nodes)
@@ -23,7 +24,7 @@ class REPILPSolverCPSat(GCSolver):
             self.graph.nodes[node]["index"] = i
             
         self.bound = -1
-        self.model = CpModel()
+        self.model = gp.Model()
         
         
         # create a decision variable vor every pair v,w where w is not in the neighborhood of v and the index of v is smaller of w
@@ -31,14 +32,14 @@ class REPILPSolverCPSat(GCSolver):
         for v in self.nodes:
             for w in (list(nx.non_neighbors(self.graph, v)) + [v]):
                 if self.graph.nodes[v]["index"] >= self.graph.nodes[w]["index"]:
-                    self.x[v, w] = self.model.NewBoolVar(f"x_{v}_{w}")
+                    self.x[v, w] = self.model.addVar(vtype=gp.GRB.BINARY, name=f"x_{v}_{w}")
                 else:
                     self.x[v, w] = 0
         
         
         # every node chooses exactly one representative
         for v in self.nodes:
-            self.model.Add(sum([self.x[v, w] for w in (list(nx.non_neighbors(self.graph, v)) + [v]) if (v, w) in self.x]) == 1)
+            self.model.addConstr(gp.quicksum([self.x[v, w] for w in (list(nx.non_neighbors(self.graph, v)) + [v]) if (v, w) in self.x]) == 1)
     
         
         # 1. if u and v are adjacent they can not select the same representative
@@ -49,23 +50,26 @@ class REPILPSolverCPSat(GCSolver):
             for u in V_minus_N_w:
                 for v in V_minus_N_w:
                     if self.graph.has_edge(u, v):
-                        self.model.Add(self.x[u, w] + self.x[v, w] <= self.x[w, w])
+                        self.model.addConstr(self.x[u, w] + self.x[v, w] <= self.x[w, w])
         
         
-        self.model.Minimize(sum(self.x[v, v] for v in self.nodes))
-        self.solver = CpSolver()
-        self.solver.parameters.log_search_progress = True
+        self.model.setObjective(
+            gp.quicksum(self.x[v, v] for v in self.nodes),
+            gp.GRB.MINIMIZE
+        )
+        
     
     def generate_graph(self):
         color = 1
         for v in self.nodes:
-            if self.solver.Value(self.x[v, v]):
+            if self.x[v, v].X:
                 self.graph.nodes[v]["color"] = color
                 color += 1
         
         for (u, v), var in self.x.items():
-            if self.solver.Value(var):
-                self.graph.nodes[u]["color"] = self.graph.nodes[v]["color"]
+            if type(var) != int:
+                if var.X:
+                    self.graph.nodes[u]["color"] = self.graph.nodes[v]["color"]
     
     def get_graph(self):
         if not self.solution_generated:
@@ -75,25 +79,27 @@ class REPILPSolverCPSat(GCSolver):
     
     def solve(self, timelimit: float = math.inf):
         
-        if timelimit < math.inf:
-            self.solver.parameters.max_time_in_seconds = timelimit
         
-        cp_status = self.solver.Solve(self.model)
+        if timelimit < math.inf:
+            self.model.Params.TimeLimit = timelimit
+        
+        self.model.optimize()
         used_colors = 0
         for w in self.nodes:
-            var = self.solver.Value(self.x[w, w])
+            var = self.x[w, w].X
             if var:
                 used_colors += 1
             
         
+        self.bound = used_colors
         
-        
-        if cp_status in [CPFEASIBLE, CPOPTIMAL]:
+        gp_status = self.model.Status
+        if gp_status == gp.GRB.OPTIMAL or self.model.SolCount > 0:
             self.bound = used_colors
             self.generate_graph()
-            if cp_status == CPFEASIBLE:
-                self.status = ModelStatus.FEASIBLE        
-            elif cp_status == CPOPTIMAL:
+            if self.model.SolCount > 0:
+                self.status = ModelStatus.FEASIBLE
+            elif gp_status == gp.GRB.OPTIMAL:
                 self.status = ModelStatus.OPTIMAL
         else:
             self.bound = math.inf
