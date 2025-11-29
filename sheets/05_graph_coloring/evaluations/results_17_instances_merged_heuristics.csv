@@ -1,0 +1,278 @@
+instance,solver,metric
+jean.col,ASSILPSolverCPSat Preprocessed,10
+jean.col,ASS_S_ILPSolverCPSat Preprocessed,10
+jean.col,ASSILPSolverGurobi Preprocessed,10
+jean.col,ASS_S_ILPSolverGurobi Preprocessed,10
+jean.col,NotEqualSolver Preprocessed,10
+jean.col,AllDifferentSolver Preprocessed,10
+jean.col,PYSATSolver Preprocessed,10
+huck.col,ASSILPSolverCPSat Preprocessed,11
+huck.col,ASS_S_ILPSolverCPSat Preprocessed,11
+huck.col,ASSILPSolverGurobi Preprocessed,11
+huck.col,ASS_S_ILPSolverGurobi Preprocessed,11
+huck.col,NotEqualSolver Preprocessed,11
+huck.col,AllDifferentSolver Preprocessed,11
+huck.col,PYSATSolver Preprocessed,11
+zeroin.i.1.col,ASSILPSolverCPSat Preprocessed,49
+zeroin.i.1.col,ASS_S_ILPSolverCPSat Preprocessed,49
+zeroin.i.1.col,ASSILPSolverGurobi Preprocessed,49
+zeroin.i.1.col,ASS_S_ILPSolverGurobi Preprocessed,49
+zeroin.i.1.col,NotEqualSolver Preprocessed,49
+zeroin.i.1.col,AllDifferentSolver Preprocessed,49
+zeroin.i.1.col,PYSATSolver Preprocessed,49
+fpsol2.i.1.col,ASSILPSolverCPSat Preprocessed,65
+fpsol2.i.1.col,ASS_S_ILPSolverCPSat Preprocessed,65
+fpsol2.i.1.col,ASSILPSolverGurobi Preprocessed,65
+fpsol2.i.1.col,ASS_S_ILPSolverGurobi Preprocessed,65
+fpsol2.i.1.col,NotEqualSolver Preprocessed,65
+fpsol2.i.1.col,AllDifferentSolver Preprocessed,65
+fpsol2.i.1.col,PYSATSolver Preprocessed,65
+fpsol2.i.2.col,ASSILPSolverCPSat Preprocessed,30
+fpsol2.i.2.col,ASS_S_ILPSolverCPSat Preprocessed,30
+fpsol2.i.2.col,ASSILPSolverGurobi Preprocessed,30
+fpsol2.i.2.col,ASS_S_ILPSolverGurobi Preprocessed,30
+fpsol2.i.2.col,NotEqualSolver Preprocessed,30
+fpsol2.i.2.col,AllDifferentSolver Preprocessed,30
+fpsol2.i.2.col,PYSATSolver Preprocessed,30
+fpsol2.i.3.col,ASSILPSolverCPSat Preprocessed,30
+fpsol2.i.3.col,ASS_S_ILPSolverCPSat Preprocessed,30
+fpsol2.i.3.col,ASSILPSolverGurobi Preprocessed,30
+fpsol2.i.3.col,ASS_S_ILPSolverGurobi Preprocessed,30
+fpsol2.i.3.col,NotEqualSolver Preprocessed,30
+fpsol2.i.3.col,AllDifferentSolver Preprocessed,30
+fpsol2.i.3.col,PYSATSolver Preprocessed,30
+le450_15b.col,ASSILPSolverCPSat Preprocessed,15
+le450_15b.col,ASS_S_ILPSolverCPSat Preprocessed,15
+le450_15b.col,ASSILPSolverGurobi Preprocessed,17
+le450_15b.col,ASS_S_ILPSolverGurobi Preprocessed,17
+le450_15b.col,NotEqualSolver Preprocessed,15
+le450_15b.col,AllDifferentSolver Preprocessed,15
+le450_15b.col,PYSATSolver Preprocessed,15
+le450_15c.col,ASSILPSolverCPSat Preprocessed,21
+le450_15c.col,ASS_S_ILPSolverCPSat Preprocessed,21
+le450_15c.col,ASSILPSolverGurobi Preprocessed,24
+le450_15c.col,NotEqualSolver Preprocessed,23
+le450_15c.col,AllDifferentSolver Preprocessed,23
+le450_15c.col,PYSATSolver Preprocessed,22
+le450_15d.col,ASSILPSolverCPSat Preprocessed,21
+le450_15d.col,ASS_S_ILPSolverCPSat Preprocessed,21
+le450_15d.col,ASSILPSolverGurobi Preprocessed,24
+le450_15d.col,ASS_S_ILPSolverGurobi Preprocessed,24
+le450_15d.col,NotEqualSolver Preprocessed,23
+le450_15d.col,AllDifferentSolver Preprocessed,22
+le450_15d.col,PYSATSolver Preprocessed,22
+le450_25a.col,ASSILPSolverCPSat Preprocessed,25
+le450_25a.col,ASS_S_ILPSolverCPSat Preprocessed,25
+le450_25a.col,ASSILPSolverGurobi Preprocessed,25
+le450_25a.col,ASS_S_ILPSolverGurobi Preprocessed,25
+le450_25a.col,NotEqualSolver Preprocessed,25
+le450_25a.col,AllDifferentSolver Preprocessed,25
+le450_25a.col,PYSATSolver Preprocessed,25
+le450_25b.col,ASSILPSolverCPSat Preprocessed,25
+le450_25b.col,ASS_S_ILPSolverCPSat Preprocessed,25
+le450_25b.col,ASSILPSolverGurobi Preprocessed,25
+le450_25b.col,ASS_S_ILPSolverGurobi Preprocessed,25
+le450_25b.col,NotEqualSolver Preprocessed,25
+le450_25b.col,AllDifferentSolver Preprocessed,25
+le450_25b.col,PYSATSolver Preprocessed,25
+le450_25c.col,ASSILPSolverCPSat Preprocessed,27
+le450_25c.col,ASS_S_ILPSolverCPSat Preprocessed,27
+le450_25c.col,NotEqualSolver Preprocessed,27
+le450_25c.col,AllDifferentSolver Preprocessed,27
+le450_25c.col,PYSATSolver Preprocessed,27
+le450_25d.col,ASSILPSolverCPSat Preprocessed,27
+le450_25d.col,ASS_S_ILPSolverCPSat Preprocessed,27
+le450_25d.col,ASSILPSolverGurobi Preprocessed,29
+le450_25d.col,NotEqualSolver Preprocessed,27
+le450_25d.col,AllDifferentSolver Preprocessed,27
+le450_25d.col,PYSATSolver Preprocessed,27
+le450_5a.col,ASSILPSolverCPSat Preprocessed,5
+le450_5a.col,ASS_S_ILPSolverCPSat Preprocessed,5
+le450_5a.col,ASSILPSolverGurobi Preprocessed,10
+le450_5a.col,ASS_S_ILPSolverGurobi Preprocessed,10
+le450_5a.col,NotEqualSolver Preprocessed,5
+le450_5a.col,AllDifferentSolver Preprocessed,5
+le450_5a.col,PYSATSolver Preprocessed,8
+le450_5b.col,ASSILPSolverCPSat Preprocessed,5
+le450_5b.col,ASS_S_ILPSolverCPSat Preprocessed,5
+le450_5b.col,NotEqualSolver Preprocessed,5
+le450_5b.col,AllDifferentSolver Preprocessed,5
+le450_5b.col,PYSATSolver Preprocessed,5
+le450_5c.col,ASSILPSolverCPSat Preprocessed,5
+le450_5c.col,ASS_S_ILPSolverCPSat Preprocessed,5
+le450_5c.col,ASSILPSolverGurobi Preprocessed,11
+le450_5c.col,ASS_S_ILPSolverGurobi Preprocessed,11
+le450_5c.col,NotEqualSolver Preprocessed,5
+le450_5c.col,AllDifferentSolver Preprocessed,5
+le450_5c.col,PYSATSolver Preprocessed,5
+le450_5d.col,ASSILPSolverCPSat Preprocessed,5
+le450_5d.col,ASS_S_ILPSolverCPSat Preprocessed,5
+le450_5d.col,ASSILPSolverGurobi Preprocessed,11
+le450_5d.col,ASS_S_ILPSolverGurobi Preprocessed,11
+le450_5d.col,NotEqualSolver Preprocessed,5
+le450_5d.col,AllDifferentSolver Preprocessed,5
+le450_5d.col,PYSATSolver Preprocessed,5
+jean.col,ASSILPSolverCPSat,10
+jean.col,ASS_S_ILPSolverCPSat,10
+jean.col,ASSILPSolverGurobi,10
+jean.col,ASS_S_ILPSolverGurobi,10
+jean.col,NotEqualSolver,10
+jean.col,AllDifferentSolver,10
+jean.col,PYSATSolver,10
+huck.col,ASSILPSolverCPSat,11
+huck.col,ASS_S_ILPSolverCPSat,11
+huck.col,ASSILPSolverGurobi,11
+huck.col,ASS_S_ILPSolverGurobi,11
+huck.col,NotEqualSolver,11
+huck.col,AllDifferentSolver,11
+huck.col,PYSATSolver,11
+zeroin.i.1.col,ASSILPSolverCPSat,49
+zeroin.i.1.col,ASS_S_ILPSolverCPSat,49
+zeroin.i.1.col,ASSILPSolverGurobi,49
+zeroin.i.1.col,ASS_S_ILPSolverGurobi,49
+zeroin.i.1.col,NotEqualSolver,49
+zeroin.i.1.col,AllDifferentSolver,49
+zeroin.i.1.col,PYSATSolver,49
+fpsol2.i.1.col,ASSILPSolverCPSat,65
+fpsol2.i.1.col,ASS_S_ILPSolverCPSat,65
+fpsol2.i.1.col,ASSILPSolverGurobi,65
+fpsol2.i.1.col,ASS_S_ILPSolverGurobi,65
+fpsol2.i.1.col,NotEqualSolver,65
+fpsol2.i.1.col,AllDifferentSolver,65
+fpsol2.i.1.col,PYSATSolver,65
+fpsol2.i.2.col,ASSILPSolverCPSat,30
+fpsol2.i.2.col,ASS_S_ILPSolverCPSat,30
+fpsol2.i.2.col,ASSILPSolverGurobi,30
+fpsol2.i.2.col,ASS_S_ILPSolverGurobi,30
+fpsol2.i.2.col,NotEqualSolver,30
+fpsol2.i.2.col,AllDifferentSolver,30
+fpsol2.i.2.col,PYSATSolver,30
+fpsol2.i.3.col,ASSILPSolverCPSat,30
+fpsol2.i.3.col,ASS_S_ILPSolverCPSat,30
+fpsol2.i.3.col,ASSILPSolverGurobi,30
+fpsol2.i.3.col,ASS_S_ILPSolverGurobi,30
+fpsol2.i.3.col,NotEqualSolver,30
+fpsol2.i.3.col,AllDifferentSolver,30
+fpsol2.i.3.col,PYSATSolver,30
+le450_15b.col,ASSILPSolverCPSat,15
+le450_15b.col,ASS_S_ILPSolverCPSat,15
+le450_15b.col,ASSILPSolverGurobi,17
+le450_15b.col,ASS_S_ILPSolverGurobi,17
+le450_15b.col,NotEqualSolver,15
+le450_15b.col,AllDifferentSolver,15
+le450_15b.col,PYSATSolver,15
+le450_15c.col,ASSILPSolverCPSat,21
+le450_15c.col,ASS_S_ILPSolverCPSat,20
+le450_15c.col,ASSILPSolverGurobi,24
+le450_15c.col,NotEqualSolver,23
+le450_15c.col,AllDifferentSolver,23
+le450_15c.col,PYSATSolver,22
+le450_15d.col,ASSILPSolverCPSat,21
+le450_15d.col,ASS_S_ILPSolverCPSat,21
+le450_15d.col,ASSILPSolverGurobi,24
+le450_15d.col,ASS_S_ILPSolverGurobi,24
+le450_15d.col,NotEqualSolver,23
+le450_15d.col,AllDifferentSolver,22
+le450_15d.col,PYSATSolver,22
+le450_25a.col,ASSILPSolverCPSat,25
+le450_25a.col,ASS_S_ILPSolverCPSat,25
+le450_25a.col,ASSILPSolverGurobi,25
+le450_25a.col,ASS_S_ILPSolverGurobi,25
+le450_25a.col,NotEqualSolver,25
+le450_25a.col,AllDifferentSolver,25
+le450_25a.col,PYSATSolver,25
+le450_25b.col,ASSILPSolverCPSat,25
+le450_25b.col,ASS_S_ILPSolverCPSat,25
+le450_25b.col,ASSILPSolverGurobi,25
+le450_25b.col,ASS_S_ILPSolverGurobi,25
+le450_25b.col,NotEqualSolver,25
+le450_25b.col,AllDifferentSolver,25
+le450_25b.col,PYSATSolver,25
+le450_25c.col,ASSILPSolverCPSat,27
+le450_25c.col,ASS_S_ILPSolverCPSat,27
+le450_25c.col,NotEqualSolver,27
+le450_25c.col,AllDifferentSolver,27
+le450_25c.col,PYSATSolver,27
+le450_25d.col,ASSILPSolverCPSat,27
+le450_25d.col,ASS_S_ILPSolverCPSat,27
+le450_25d.col,ASSILPSolverGurobi,29
+le450_25d.col,NotEqualSolver,27
+le450_25d.col,AllDifferentSolver,27
+le450_25d.col,PYSATSolver,27
+le450_5a.col,ASSILPSolverCPSat,5
+le450_5a.col,ASS_S_ILPSolverCPSat,5
+le450_5a.col,ASSILPSolverGurobi,10
+le450_5a.col,ASS_S_ILPSolverGurobi,10
+le450_5a.col,NotEqualSolver,5
+le450_5a.col,AllDifferentSolver,5
+le450_5a.col,PYSATSolver,8
+le450_5b.col,ASSILPSolverCPSat,5
+le450_5b.col,ASS_S_ILPSolverCPSat,5
+le450_5b.col,NotEqualSolver,5
+le450_5b.col,AllDifferentSolver,5
+le450_5b.col,PYSATSolver,5
+le450_5c.col,ASSILPSolverCPSat,5
+le450_5c.col,ASS_S_ILPSolverCPSat,5
+le450_5c.col,ASSILPSolverGurobi,11
+le450_5c.col,ASS_S_ILPSolverGurobi,11
+le450_5c.col,NotEqualSolver,5
+le450_5c.col,AllDifferentSolver,5
+le450_5c.col,PYSATSolver,5
+le450_5d.col,ASSILPSolverCPSat,5
+le450_5d.col,ASS_S_ILPSolverCPSat,5
+le450_5d.col,ASSILPSolverGurobi,11
+le450_5d.col,ASS_S_ILPSolverGurobi,11
+le450_5d.col,NotEqualSolver,5
+le450_5d.col,AllDifferentSolver,5
+le450_5d.col,PYSATSolver,5
+jean.col,NaiveGreedyGraphColoringHeuristic,10
+jean.col,MultiStartGreedyGraphColoringHeuristic,10
+jean.col,DSATUR,10
+huck.col,NaiveGreedyGraphColoringHeuristic,11
+huck.col,MultiStartGreedyGraphColoringHeuristic,11
+huck.col,DSATUR,11
+zeroin.i.1.col,NaiveGreedyGraphColoringHeuristic,49
+zeroin.i.1.col,MultiStartGreedyGraphColoringHeuristic,49
+zeroin.i.1.col,DSATUR,49
+fpsol2.i.1.col,NaiveGreedyGraphColoringHeuristic,65
+fpsol2.i.1.col,MultiStartGreedyGraphColoringHeuristic,65
+fpsol2.i.1.col,DSATUR,65
+fpsol2.i.2.col,NaiveGreedyGraphColoringHeuristic,30
+fpsol2.i.2.col,MultiStartGreedyGraphColoringHeuristic,30
+fpsol2.i.2.col,DSATUR,30
+fpsol2.i.3.col,NaiveGreedyGraphColoringHeuristic,30
+fpsol2.i.3.col,MultiStartGreedyGraphColoringHeuristic,30
+fpsol2.i.3.col,DSATUR,30
+le450_15b.col,NaiveGreedyGraphColoringHeuristic,22
+le450_15b.col,MultiStartGreedyGraphColoringHeuristic,21
+le450_15b.col,DSATUR,17
+le450_15c.col,NaiveGreedyGraphColoringHeuristic,30
+le450_15c.col,MultiStartGreedyGraphColoringHeuristic,30
+le450_15c.col,DSATUR,24
+le450_15d.col,NaiveGreedyGraphColoringHeuristic,31
+le450_15d.col,MultiStartGreedyGraphColoringHeuristic,30
+le450_15d.col,DSATUR,24
+le450_25a.col,NaiveGreedyGraphColoringHeuristic,28
+le450_25a.col,MultiStartGreedyGraphColoringHeuristic,26
+le450_25a.col,DSATUR,25
+le450_25b.col,NaiveGreedyGraphColoringHeuristic,27
+le450_25b.col,MultiStartGreedyGraphColoringHeuristic,26
+le450_25b.col,DSATUR,25
+le450_25c.col,NaiveGreedyGraphColoringHeuristic,37
+le450_25c.col,MultiStartGreedyGraphColoringHeuristic,34
+le450_25c.col,DSATUR,28
+le450_25d.col,NaiveGreedyGraphColoringHeuristic,35
+le450_25d.col,MultiStartGreedyGraphColoringHeuristic,35
+le450_25d.col,DSATUR,29
+le450_5a.col,NaiveGreedyGraphColoringHeuristic,14
+le450_5a.col,MultiStartGreedyGraphColoringHeuristic,12
+le450_5a.col,DSATUR,10
+le450_5b.col,NaiveGreedyGraphColoringHeuristic,13
+le450_5b.col,MultiStartGreedyGraphColoringHeuristic,12
+le450_5b.col,DSATUR,7
+le450_5c.col,NaiveGreedyGraphColoringHeuristic,17
+le450_5c.col,MultiStartGreedyGraphColoringHeuristic,15
+le450_5c.col,DSATUR,11
+le450_5d.col,NaiveGreedyGraphColoringHeuristic,18
+le450_5d.col,MultiStartGreedyGraphColoringHeuristic,16
+le450_5d.col,DSATUR,11

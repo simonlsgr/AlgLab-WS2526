@@ -1,0 +1,17 @@
+instance,solver,metric
+0,ASSILPSolverCPSat,21
+0,ASS_S_ILPSolverCPSat,21
+0,REPILPSolverCPSat,22
+0,ASSILPSolverGurobi,26
+0,REPILPSolverGurobi,29
+0,NotEqualSolver,23
+0,AllDifferentSolver,22
+0,PYSATSolver,22
+1,ASSILPSolverCPSat,21
+1,ASS_S_ILPSolverCPSat,21
+1,REPILPSolverCPSat,22
+1,ASSILPSolverGurobi,24
+1,REPILPSolverGurobi,41
+1,NotEqualSolver,23
+1,AllDifferentSolver,23
+1,PYSATSolver,22
