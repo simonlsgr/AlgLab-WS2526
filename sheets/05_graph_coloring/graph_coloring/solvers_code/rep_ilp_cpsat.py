@@ -57,7 +57,7 @@ class REPILPSolverCPSat(GCSolver):
         self.model.Minimize(sum(self.x[v, v] for v in self.nodes))
         self.solver = CpSolver()
         self.solver.parameters.log_search_progress = True
-        # self.solver.parameters.num_workers = 6
+        # self.solver.parameters.num_workers = 12
     
     def generate_graph(self):
         color = 1
