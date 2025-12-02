@@ -17,8 +17,8 @@ from graph_coloring.preprocessing import DegreeBasedPreprocessor
 def preprocessing():
     
     graph = nx.erdos_renyi_graph(50, .25)
-    lower_bound = nx.approximation.large_clique_size(graph
-                                                     )
+    lower_bound = nx.approximation.large_clique_size(graph)
+    
     preprocessor = DegreeBasedPreprocessor(graph)
     reduced_graph = preprocessor.preprocess()
     
@@ -27,7 +27,7 @@ def preprocessing():
     solution = arbitrary_solver.solve()
     
     post_processed_sol = preprocessor.postprocess(solution)
-    
+    CHECK(nx.is_isomorphic(solution.graph, graph), "The postprocessed graph must be isomorphic to the original graph!")
     if post_processed_sol.status == ModelStatus.OPTIMAL or post_processed_sol.status == ModelStatus.FEASIBLE:
         CHECK(lower_bound <= post_processed_sol.colors, "The number of used colors must be greater or equal to the lower bound!")
         CHECK(is_valid_coloring(post_processed_sol.graph), "The coloring of the graph must be correct!")
