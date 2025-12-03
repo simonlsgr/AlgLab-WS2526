@@ -10,23 +10,20 @@ from utils.coloring import is_valid_coloring
 
 from utils.data_schema import Solution, ModelStatus
 
+import networkx as nx
 
 if __name__ == "__main__":
-    G, chromatic = load_instance("le450_15b.col")
+    G, chromatic = load_instance("fpsol2.i.1.col")
+    # G = nx.erdos_renyi_graph(75, 0.5)
     G_copy = G.copy()
 
-    rep_solver_cpsat = REPILPSolverCPSat(G)
+    rep_solver_cpsat = NotEqualSolver(G)
 
     solution_rep_cpsat = rep_solver_cpsat.solve()
     print(is_valid_coloring(solution_rep_cpsat.graph))
     print(solution_rep_cpsat.colors)
     
     
-    rep_solver_gurobi = REPILPSolverGurobi(G_copy)
-    
-    solution_rep_gurobi = rep_solver_gurobi.solve()
-    print(is_valid_coloring(solution_rep_gurobi.graph))
-    print(solution_rep_gurobi.colors)
-    
+
     
    

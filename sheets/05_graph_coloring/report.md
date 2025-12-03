@@ -54,4 +54,34 @@ Both Gurobi solvers (ASS and ASS-S) performed worse than any of the other solver
 
 Since we do not have access to hardware capable of optimizing large instances the time limit is reduced to 20 seconds to review the solvers abilites to prove lower bounds.
 
+![17 Instances best lower bounds](evaluations/results_best_lower_bound_17_instances_0.png)
+![Kneser best lower](./evaluations/results_best_lower_bound_kneser_0.png)
+![Barabasi Albert best lower](./evaluations/results_best_lower_barabasi_albert_0.png)
+
+Remarkably not one solver performs best on all graph classes. Though the performance for the best upper bound is roughly the same as the best lower bound. To achieve results which can be interpreted in any way we would need an instance set where the solvers dont solve to optimality. Unfortunately this is not achievable with our current access to hardware and the limitations set by the task (running for 60 seconds).
+
 ## Preprocessor
+
+The preprocessor does not really have an effect on the instances retrieved from the CMU. Only 11 out of the 17 graphs were altered at all and thoose graphs which were altered had only about 30% of the edges removed. At face value this might seem like a large number, but most of the removed nodes are from the easier instances (jean 80→12 nodes and huck 74→11 nodes).
+
+The preprocessor performs well on graphs with a large clique and many sparse parts. 
+The following code creates a graph in which every node of the original graph has the as many leafs as the original graph had nodes:
+```python
+def very_leafy_graph(n: int, p: float):
+    
+    graph: nx.Graph = nx.erdos_renyi_graph(n, p)
+    
+    original_nodes = list(graph.nodes())
+    num_nodes = len(original_nodes)
+    
+    leaf = num_nodes
+    for node in original_nodes:
+        for _ in range(num_nodes):
+            graph.add_node(leaf)
+            graph.add_edge(node, leaf)
+            leaf += 1
+    
+    return graph
+```
+
+Following this schema we could create a graph class on which the percentage of removed nodes by the preprocessor approaches 100%. 
