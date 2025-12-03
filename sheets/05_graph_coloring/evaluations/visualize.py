@@ -12,9 +12,9 @@ def run_performance_profile(path: str, ax: plt.Axes | None = None) -> plt.Axes:
         instance_column="instance",
         strategy_column="solver",
         metric_column="metric",
-        direction="min",
+        direction="max",
         comparison="relative",
-        title="Performance Profile: 17 Instances",
+        title="Performance Profile: 10 Kneser-Graphs Best Lower Bounds",
         ax=ax
     )
     
@@ -25,11 +25,11 @@ def run_performance_profile(path: str, ax: plt.Axes | None = None) -> plt.Axes:
     
 
 def main():
-    path = "results_17_instances_merged_heuristics"
+    path = "results_best_lower_bound_kneser_0"
     ax1 = run_performance_profile("./evaluations/"+path+".csv")
     # ax2 = run_performance_profile("./evaluations/results_17_instances_preprocessed_2.csv", ax1)
     
     plt.show()
     
     
-    ax1.figure.savefig(path+".png")
+    ax1.figure.savefig("./evaluations/"+path+".png")

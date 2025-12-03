@@ -1,0 +1,211 @@
+instance,solver,metric
+kneser_graph_1,ASSILPSolverCPSat,8
+kneser_graph_1,ASS_S_ILPSolverCPSat,8
+kneser_graph_1,REPILPSolverCPSat,8
+kneser_graph_1,ASSILPSolverGurobi,8
+kneser_graph_1,ASS_S_ILPSolverGurobi,8
+kneser_graph_1,REPILPSolverGurobi,8
+kneser_graph_1,NotEqualSolver,8
+kneser_graph_1,AllDifferentSolver,8
+kneser_graph_1,PYSATSolver,8
+kneser_graph_2,ASSILPSolverCPSat,8
+kneser_graph_2,ASS_S_ILPSolverCPSat,8
+kneser_graph_2,REPILPSolverCPSat,8
+kneser_graph_2,ASSILPSolverGurobi,8
+kneser_graph_2,ASS_S_ILPSolverGurobi,8
+kneser_graph_2,REPILPSolverGurobi,8
+kneser_graph_2,NotEqualSolver,8
+kneser_graph_2,AllDifferentSolver,8
+kneser_graph_2,PYSATSolver,8
+kneser_graph_3,ASSILPSolverCPSat,8
+kneser_graph_3,ASS_S_ILPSolverCPSat,8
+kneser_graph_3,REPILPSolverCPSat,8
+kneser_graph_3,ASSILPSolverGurobi,8
+kneser_graph_3,ASS_S_ILPSolverGurobi,8
+kneser_graph_3,REPILPSolverGurobi,8
+kneser_graph_3,NotEqualSolver,8
+kneser_graph_3,AllDifferentSolver,8
+kneser_graph_3,PYSATSolver,8
+kneser_graph_4,ASSILPSolverCPSat,8
+kneser_graph_4,ASS_S_ILPSolverCPSat,8
+kneser_graph_4,REPILPSolverCPSat,8
+kneser_graph_4,ASSILPSolverGurobi,8
+kneser_graph_4,ASS_S_ILPSolverGurobi,8
+kneser_graph_4,REPILPSolverGurobi,8
+kneser_graph_4,NotEqualSolver,8
+kneser_graph_4,AllDifferentSolver,8
+kneser_graph_4,PYSATSolver,8
+kneser_graph_5,ASSILPSolverCPSat,8
+kneser_graph_5,ASS_S_ILPSolverCPSat,8
+kneser_graph_5,REPILPSolverCPSat,8
+kneser_graph_5,ASSILPSolverGurobi,8
+kneser_graph_5,ASS_S_ILPSolverGurobi,8
+kneser_graph_5,REPILPSolverGurobi,8
+kneser_graph_5,NotEqualSolver,8
+kneser_graph_5,AllDifferentSolver,8
+kneser_graph_5,PYSATSolver,8
+kneser_graph_6,ASSILPSolverCPSat,8
+kneser_graph_6,ASS_S_ILPSolverCPSat,8
+kneser_graph_6,REPILPSolverCPSat,8
+kneser_graph_6,ASSILPSolverGurobi,8
+kneser_graph_6,ASS_S_ILPSolverGurobi,8
+kneser_graph_6,REPILPSolverGurobi,8
+kneser_graph_6,NotEqualSolver,8
+kneser_graph_6,AllDifferentSolver,8
+kneser_graph_6,PYSATSolver,8
+kneser_graph_7,ASSILPSolverCPSat,8
+kneser_graph_7,ASS_S_ILPSolverCPSat,8
+kneser_graph_7,REPILPSolverCPSat,8
+kneser_graph_7,ASSILPSolverGurobi,8
+kneser_graph_7,ASS_S_ILPSolverGurobi,8
+kneser_graph_7,REPILPSolverGurobi,8
+kneser_graph_7,NotEqualSolver,8
+kneser_graph_7,AllDifferentSolver,8
+kneser_graph_7,PYSATSolver,8
+kneser_graph_8,ASSILPSolverCPSat,8
+kneser_graph_8,ASS_S_ILPSolverCPSat,8
+kneser_graph_8,REPILPSolverCPSat,8
+kneser_graph_8,ASSILPSolverGurobi,8
+kneser_graph_8,ASS_S_ILPSolverGurobi,8
+kneser_graph_8,REPILPSolverGurobi,8
+kneser_graph_8,NotEqualSolver,8
+kneser_graph_8,AllDifferentSolver,8
+kneser_graph_8,PYSATSolver,8
+kneser_graph_9,ASSILPSolverCPSat,8
+kneser_graph_9,ASS_S_ILPSolverCPSat,8
+kneser_graph_9,REPILPSolverCPSat,8
+kneser_graph_9,ASSILPSolverGurobi,8
+kneser_graph_9,ASS_S_ILPSolverGurobi,8
+kneser_graph_9,REPILPSolverGurobi,8
+kneser_graph_9,NotEqualSolver,8
+kneser_graph_9,AllDifferentSolver,8
+kneser_graph_9,PYSATSolver,8
+kneser_graph_10,ASSILPSolverCPSat,8
+kneser_graph_10,ASS_S_ILPSolverCPSat,8
+kneser_graph_10,REPILPSolverCPSat,8
+kneser_graph_10,ASSILPSolverGurobi,8
+kneser_graph_10,ASS_S_ILPSolverGurobi,8
+kneser_graph_10,REPILPSolverGurobi,8
+kneser_graph_10,NotEqualSolver,8
+kneser_graph_10,AllDifferentSolver,8
+kneser_graph_10,PYSATSolver,8
+kneser_graph_1,ASSILPSolverCPSat Preprocessed,8
+kneser_graph_1,ASS_S_ILPSolverCPSat Preprocessed,8
+kneser_graph_1,REPILPSolverCPSat Preprocessed,8
+kneser_graph_1,ASSILPSolverGurobi Preprocessed,8
+kneser_graph_1,ASS_S_ILPSolverGurobi Preprocessed,8
+kneser_graph_1,REPILPSolverGurobi Preprocessed,8
+kneser_graph_1,NotEqualSolver Preprocessed,8
+kneser_graph_1,AllDifferentSolver Preprocessed,8
+kneser_graph_1,PYSATSolver Preprocessed,8
+kneser_graph_2,ASSILPSolverCPSat Preprocessed,8
+kneser_graph_2,ASS_S_ILPSolverCPSat Preprocessed,8
+kneser_graph_2,REPILPSolverCPSat Preprocessed,8
+kneser_graph_2,ASSILPSolverGurobi Preprocessed,8
+kneser_graph_2,ASS_S_ILPSolverGurobi Preprocessed,8
+kneser_graph_2,REPILPSolverGurobi Preprocessed,8
+kneser_graph_2,NotEqualSolver Preprocessed,8
+kneser_graph_2,AllDifferentSolver Preprocessed,8
+kneser_graph_2,PYSATSolver Preprocessed,8
+kneser_graph_3,ASSILPSolverCPSat Preprocessed,8
+kneser_graph_3,ASS_S_ILPSolverCPSat Preprocessed,8
+kneser_graph_3,REPILPSolverCPSat Preprocessed,8
+kneser_graph_3,ASSILPSolverGurobi Preprocessed,8
+kneser_graph_3,ASS_S_ILPSolverGurobi Preprocessed,8
+kneser_graph_3,REPILPSolverGurobi Preprocessed,8
+kneser_graph_3,NotEqualSolver Preprocessed,8
+kneser_graph_3,AllDifferentSolver Preprocessed,8
+kneser_graph_3,PYSATSolver Preprocessed,8
+kneser_graph_4,ASSILPSolverCPSat Preprocessed,8
+kneser_graph_4,ASS_S_ILPSolverCPSat Preprocessed,8
+kneser_graph_4,REPILPSolverCPSat Preprocessed,8
+kneser_graph_4,ASSILPSolverGurobi Preprocessed,8
+kneser_graph_4,ASS_S_ILPSolverGurobi Preprocessed,8
+kneser_graph_4,REPILPSolverGurobi Preprocessed,8
+kneser_graph_4,NotEqualSolver Preprocessed,8
+kneser_graph_4,AllDifferentSolver Preprocessed,8
+kneser_graph_4,PYSATSolver Preprocessed,8
+kneser_graph_5,ASSILPSolverCPSat Preprocessed,8
+kneser_graph_5,ASS_S_ILPSolverCPSat Preprocessed,8
+kneser_graph_5,REPILPSolverCPSat Preprocessed,8
+kneser_graph_5,ASSILPSolverGurobi Preprocessed,8
+kneser_graph_5,ASS_S_ILPSolverGurobi Preprocessed,8
+kneser_graph_5,REPILPSolverGurobi Preprocessed,8
+kneser_graph_5,NotEqualSolver Preprocessed,8
+kneser_graph_5,AllDifferentSolver Preprocessed,8
+kneser_graph_5,PYSATSolver Preprocessed,8
+kneser_graph_6,ASSILPSolverCPSat Preprocessed,8
+kneser_graph_6,ASS_S_ILPSolverCPSat Preprocessed,8
+kneser_graph_6,REPILPSolverCPSat Preprocessed,8
+kneser_graph_6,ASSILPSolverGurobi Preprocessed,8
+kneser_graph_6,ASS_S_ILPSolverGurobi Preprocessed,8
+kneser_graph_6,REPILPSolverGurobi Preprocessed,8
+kneser_graph_6,NotEqualSolver Preprocessed,8
+kneser_graph_6,AllDifferentSolver Preprocessed,8
+kneser_graph_6,PYSATSolver Preprocessed,8
+kneser_graph_7,ASSILPSolverCPSat Preprocessed,8
+kneser_graph_7,ASS_S_ILPSolverCPSat Preprocessed,8
+kneser_graph_7,REPILPSolverCPSat Preprocessed,8
+kneser_graph_7,ASSILPSolverGurobi Preprocessed,8
+kneser_graph_7,ASS_S_ILPSolverGurobi Preprocessed,8
+kneser_graph_7,REPILPSolverGurobi Preprocessed,8
+kneser_graph_7,NotEqualSolver Preprocessed,8
+kneser_graph_7,AllDifferentSolver Preprocessed,8
+kneser_graph_7,PYSATSolver Preprocessed,8
+kneser_graph_8,ASSILPSolverCPSat Preprocessed,8
+kneser_graph_8,ASS_S_ILPSolverCPSat Preprocessed,8
+kneser_graph_8,REPILPSolverCPSat Preprocessed,8
+kneser_graph_8,ASSILPSolverGurobi Preprocessed,8
+kneser_graph_8,ASS_S_ILPSolverGurobi Preprocessed,8
+kneser_graph_8,REPILPSolverGurobi Preprocessed,8
+kneser_graph_8,NotEqualSolver Preprocessed,8
+kneser_graph_8,AllDifferentSolver Preprocessed,8
+kneser_graph_8,PYSATSolver Preprocessed,8
+kneser_graph_9,ASSILPSolverCPSat Preprocessed,8
+kneser_graph_9,ASS_S_ILPSolverCPSat Preprocessed,8
+kneser_graph_9,REPILPSolverCPSat Preprocessed,8
+kneser_graph_9,ASSILPSolverGurobi Preprocessed,8
+kneser_graph_9,ASS_S_ILPSolverGurobi Preprocessed,8
+kneser_graph_9,REPILPSolverGurobi Preprocessed,8
+kneser_graph_9,NotEqualSolver Preprocessed,8
+kneser_graph_9,AllDifferentSolver Preprocessed,8
+kneser_graph_9,PYSATSolver Preprocessed,8
+kneser_graph_10,ASSILPSolverCPSat Preprocessed,8
+kneser_graph_10,ASS_S_ILPSolverCPSat Preprocessed,8
+kneser_graph_10,REPILPSolverCPSat Preprocessed,8
+kneser_graph_10,ASSILPSolverGurobi Preprocessed,8
+kneser_graph_10,ASS_S_ILPSolverGurobi Preprocessed,8
+kneser_graph_10,REPILPSolverGurobi Preprocessed,8
+kneser_graph_10,NotEqualSolver Preprocessed,8
+kneser_graph_10,AllDifferentSolver Preprocessed,8
+kneser_graph_10,PYSATSolver Preprocessed,8
+kneser_graph_1,NaiveGreedyGraphColoringHeuristic,9
+kneser_graph_1,MultiStartGreedyGraphColoringHeuristic,11
+kneser_graph_1,DSATUR,10
+kneser_graph_2,NaiveGreedyGraphColoringHeuristic,12
+kneser_graph_2,MultiStartGreedyGraphColoringHeuristic,10
+kneser_graph_2,DSATUR,10
+kneser_graph_3,NaiveGreedyGraphColoringHeuristic,14
+kneser_graph_3,MultiStartGreedyGraphColoringHeuristic,11
+kneser_graph_3,DSATUR,10
+kneser_graph_4,NaiveGreedyGraphColoringHeuristic,11
+kneser_graph_4,MultiStartGreedyGraphColoringHeuristic,10
+kneser_graph_4,DSATUR,10
+kneser_graph_5,NaiveGreedyGraphColoringHeuristic,15
+kneser_graph_5,MultiStartGreedyGraphColoringHeuristic,10
+kneser_graph_5,DSATUR,10
+kneser_graph_6,NaiveGreedyGraphColoringHeuristic,11
+kneser_graph_6,MultiStartGreedyGraphColoringHeuristic,12
+kneser_graph_6,DSATUR,10
+kneser_graph_7,NaiveGreedyGraphColoringHeuristic,13
+kneser_graph_7,MultiStartGreedyGraphColoringHeuristic,10
+kneser_graph_7,DSATUR,10
+kneser_graph_8,NaiveGreedyGraphColoringHeuristic,15
+kneser_graph_8,MultiStartGreedyGraphColoringHeuristic,10
+kneser_graph_8,DSATUR,10
+kneser_graph_9,NaiveGreedyGraphColoringHeuristic,15
+kneser_graph_9,MultiStartGreedyGraphColoringHeuristic,9
+kneser_graph_9,DSATUR,10
+kneser_graph_10,NaiveGreedyGraphColoringHeuristic,10
+kneser_graph_10,MultiStartGreedyGraphColoringHeuristic,11
+kneser_graph_10,DSATUR,10

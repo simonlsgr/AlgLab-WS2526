@@ -1,0 +1,193 @@
+instance,solver,metric
+1,ASSILPSolverCPSat,20
+1,ASS_S_ILPSolverCPSat,21
+1,REPILPSolverCPSat,22
+1,ASSILPSolverGurobi,26
+1,ASS_S_ILPSolverGurobi,26
+1,REPILPSolverGurobi,26
+1,NotEqualSolver,23
+1,AllDifferentSolver,23
+1,PYSATSolver,22
+2,ASSILPSolverCPSat,20
+2,ASS_S_ILPSolverCPSat,20
+2,REPILPSolverCPSat,22
+2,ASSILPSolverGurobi,24
+2,REPILPSolverGurobi,27
+2,NotEqualSolver,22
+2,AllDifferentSolver,22
+2,PYSATSolver,22
+3,ASSILPSolverCPSat,21
+3,ASS_S_ILPSolverCPSat,21
+3,REPILPSolverCPSat,22
+3,ASSILPSolverGurobi,25
+3,REPILPSolverGurobi,27
+3,NotEqualSolver,23
+3,AllDifferentSolver,22
+3,PYSATSolver,22
+4,ASSILPSolverCPSat,21
+4,ASS_S_ILPSolverCPSat,20
+4,REPILPSolverCPSat,21
+4,ASSILPSolverGurobi,24
+4,REPILPSolverGurobi,28
+4,NotEqualSolver,23
+4,AllDifferentSolver,22
+4,PYSATSolver,22
+5,ASSILPSolverCPSat,20
+5,ASS_S_ILPSolverCPSat,21
+5,REPILPSolverCPSat,22
+5,ASSILPSolverGurobi,25
+5,REPILPSolverGurobi,27
+5,NotEqualSolver,23
+5,AllDifferentSolver,22
+5,PYSATSolver,22
+6,ASSILPSolverCPSat,20
+6,ASS_S_ILPSolverCPSat,20
+6,REPILPSolverCPSat,22
+6,ASSILPSolverGurobi,24
+6,REPILPSolverGurobi,26
+6,NotEqualSolver,22
+6,AllDifferentSolver,22
+6,PYSATSolver,22
+7,ASSILPSolverCPSat,20
+7,ASS_S_ILPSolverCPSat,20
+7,REPILPSolverCPSat,21
+7,ASSILPSolverGurobi,24
+7,REPILPSolverGurobi,27
+7,NotEqualSolver,23
+7,AllDifferentSolver,22
+7,PYSATSolver,22
+8,ASSILPSolverCPSat,21
+8,ASS_S_ILPSolverCPSat,20
+8,REPILPSolverCPSat,21
+8,ASSILPSolverGurobi,24
+8,REPILPSolverGurobi,27
+8,NotEqualSolver,23
+8,AllDifferentSolver,22
+8,PYSATSolver,22
+9,ASSILPSolverCPSat,20
+9,ASS_S_ILPSolverCPSat,21
+9,REPILPSolverCPSat,22
+9,ASSILPSolverGurobi,24
+9,REPILPSolverGurobi,27
+9,NotEqualSolver,23
+9,AllDifferentSolver,22
+9,PYSATSolver,23
+10,ASSILPSolverCPSat,20
+10,ASS_S_ILPSolverCPSat,20
+10,REPILPSolverCPSat,23
+10,ASSILPSolverGurobi,25
+10,REPILPSolverGurobi,27
+10,NotEqualSolver,23
+10,AllDifferentSolver,23
+10,PYSATSolver,23
+1,ASSILPSolverCPSat Preprocessed,20
+1,ASS_S_ILPSolverCPSat Preprocessed,20
+1,REPILPSolverCPSat Preprocessed,22
+1,ASSILPSolverGurobi Preprocessed,26
+1,ASS_S_ILPSolverGurobi Preprocessed,26
+1,REPILPSolverGurobi Preprocessed,26
+1,NotEqualSolver Preprocessed,22
+1,AllDifferentSolver Preprocessed,22
+1,PYSATSolver Preprocessed,22
+2,ASSILPSolverCPSat Preprocessed,20
+2,ASS_S_ILPSolverCPSat Preprocessed,20
+2,REPILPSolverCPSat Preprocessed,21
+2,ASSILPSolverGurobi Preprocessed,24
+2,REPILPSolverGurobi Preprocessed,27
+2,NotEqualSolver Preprocessed,22
+2,AllDifferentSolver Preprocessed,22
+2,PYSATSolver Preprocessed,22
+3,ASSILPSolverCPSat Preprocessed,21
+3,ASS_S_ILPSolverCPSat Preprocessed,21
+3,REPILPSolverCPSat Preprocessed,22
+3,ASSILPSolverGurobi Preprocessed,24
+3,REPILPSolverGurobi Preprocessed,27
+3,NotEqualSolver Preprocessed,23
+3,AllDifferentSolver Preprocessed,22
+3,PYSATSolver Preprocessed,22
+4,ASSILPSolverCPSat Preprocessed,21
+4,ASS_S_ILPSolverCPSat Preprocessed,21
+4,REPILPSolverCPSat Preprocessed,21
+4,ASSILPSolverGurobi Preprocessed,24
+4,REPILPSolverGurobi Preprocessed,28
+4,NotEqualSolver Preprocessed,23
+4,AllDifferentSolver Preprocessed,22
+4,PYSATSolver Preprocessed,22
+5,ASSILPSolverCPSat Preprocessed,20
+5,ASS_S_ILPSolverCPSat Preprocessed,20
+5,REPILPSolverCPSat Preprocessed,22
+5,ASSILPSolverGurobi Preprocessed,25
+5,REPILPSolverGurobi Preprocessed,27
+5,NotEqualSolver Preprocessed,23
+5,AllDifferentSolver Preprocessed,23
+5,PYSATSolver Preprocessed,22
+6,ASSILPSolverCPSat Preprocessed,20
+6,ASS_S_ILPSolverCPSat Preprocessed,20
+6,REPILPSolverCPSat Preprocessed,22
+6,ASSILPSolverGurobi Preprocessed,24
+6,REPILPSolverGurobi Preprocessed,26
+6,NotEqualSolver Preprocessed,22
+6,AllDifferentSolver Preprocessed,22
+6,PYSATSolver Preprocessed,22
+7,ASSILPSolverCPSat Preprocessed,20
+7,ASS_S_ILPSolverCPSat Preprocessed,20
+7,REPILPSolverCPSat Preprocessed,21
+7,ASSILPSolverGurobi Preprocessed,24
+7,REPILPSolverGurobi Preprocessed,27
+7,NotEqualSolver Preprocessed,23
+7,AllDifferentSolver Preprocessed,22
+7,PYSATSolver Preprocessed,22
+8,ASSILPSolverCPSat Preprocessed,20
+8,ASS_S_ILPSolverCPSat Preprocessed,21
+8,REPILPSolverCPSat Preprocessed,22
+8,ASSILPSolverGurobi Preprocessed,24
+8,REPILPSolverGurobi Preprocessed,27
+8,NotEqualSolver Preprocessed,23
+8,AllDifferentSolver Preprocessed,23
+8,PYSATSolver Preprocessed,22
+9,ASSILPSolverCPSat Preprocessed,21
+9,ASS_S_ILPSolverCPSat Preprocessed,20
+9,REPILPSolverCPSat Preprocessed,22
+9,ASSILPSolverGurobi Preprocessed,24
+9,REPILPSolverGurobi Preprocessed,27
+9,NotEqualSolver Preprocessed,23
+9,AllDifferentSolver Preprocessed,22
+9,PYSATSolver Preprocessed,23
+10,ASSILPSolverCPSat Preprocessed,21
+10,ASS_S_ILPSolverCPSat Preprocessed,21
+10,REPILPSolverCPSat Preprocessed,22
+10,ASSILPSolverGurobi Preprocessed,25
+10,REPILPSolverGurobi Preprocessed,27
+10,NotEqualSolver Preprocessed,23
+10,AllDifferentSolver Preprocessed,23
+10,PYSATSolver Preprocessed,23
+1,NaiveGreedyGraphColoringHeuristic,28
+1,MultiStartGreedyGraphColoringHeuristic,28
+1,DSATUR,26
+2,NaiveGreedyGraphColoringHeuristic,28
+2,MultiStartGreedyGraphColoringHeuristic,28
+2,DSATUR,24
+3,NaiveGreedyGraphColoringHeuristic,28
+3,MultiStartGreedyGraphColoringHeuristic,28
+3,DSATUR,25
+4,NaiveGreedyGraphColoringHeuristic,29
+4,MultiStartGreedyGraphColoringHeuristic,27
+4,DSATUR,24
+5,NaiveGreedyGraphColoringHeuristic,29
+5,MultiStartGreedyGraphColoringHeuristic,27
+5,DSATUR,25
+6,NaiveGreedyGraphColoringHeuristic,28
+6,MultiStartGreedyGraphColoringHeuristic,28
+6,DSATUR,24
+7,NaiveGreedyGraphColoringHeuristic,29
+7,MultiStartGreedyGraphColoringHeuristic,28
+7,DSATUR,24
+8,NaiveGreedyGraphColoringHeuristic,29
+8,MultiStartGreedyGraphColoringHeuristic,27
+8,DSATUR,24
+9,NaiveGreedyGraphColoringHeuristic,29
+9,MultiStartGreedyGraphColoringHeuristic,27
+9,DSATUR,24
+10,NaiveGreedyGraphColoringHeuristic,28
+10,MultiStartGreedyGraphColoringHeuristic,28
+10,DSATUR,25

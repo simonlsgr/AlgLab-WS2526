@@ -1,0 +1,56 @@
+Instance: jean.col
+Original Graph: Graph with 80 nodes and 254 edges
+Reduced Graph: Graph with 12 nodes and 62 edges
+Instance: huck.col
+Original Graph: Graph with 74 nodes and 301 edges
+Reduced Graph: Graph with 11 nodes and 55 edges
+Instance: zeroin.i.1.col
+Original Graph: Graph with 211 nodes and 4100 edges
+Reduced Graph: Graph with 65 nodes and 1913 edges
+Instance: fpsol2.i.1.col
+Original Graph: Graph with 496 nodes and 11654 edges
+Reduced Graph: Graph with 174 nodes and 8166 edges
+Instance: fpsol2.i.2.col
+Original Graph: Graph with 451 nodes and 8691 edges
+Reduced Graph: Graph with 165 nodes and 3936 edges
+Instance: fpsol2.i.3.col
+Original Graph: Graph with 425 nodes and 8688 edges
+Reduced Graph: Graph with 164 nodes and 3906 edges
+Instance: le450_15b.col
+Original Graph: Graph with 450 nodes and 8169 edges
+Reduced Graph: Graph with 413 nodes and 7866 edges
+Instance: le450_15c.col
+Original Graph: Graph with 450 nodes and 16680 edges
+Reduced Graph: Graph with 450 nodes and 16680 edges
+Instance: le450_15d.col
+Original Graph: Graph with 450 nodes and 16750 edges
+Reduced Graph: Graph with 450 nodes and 16750 edges
+Instance: le450_25a.col
+Original Graph: Graph with 450 nodes and 8260 edges
+Reduced Graph: Graph with 271 nodes and 5998 edges
+Instance: le450_25b.col
+Original Graph: Graph with 450 nodes and 8263 edges
+Reduced Graph: Graph with 302 nodes and 6431 edges
+Instance: le450_25c.col
+Original Graph: Graph with 450 nodes and 17343 edges
+Reduced Graph: Graph with 436 nodes and 17120 edges
+Instance: le450_25d.col
+Original Graph: Graph with 450 nodes and 17425 edges
+Reduced Graph: Graph with 436 nodes and 17178 edges
+Instance: le450_5a.col
+Original Graph: Graph with 450 nodes and 5714 edges
+Reduced Graph: Graph with 450 nodes and 5714 edges
+Instance: le450_5b.col
+Original Graph: Graph with 450 nodes and 5734 edges
+Reduced Graph: Graph with 450 nodes and 5734 edges
+Instance: le450_5c.col
+Original Graph: Graph with 450 nodes and 9803 edges
+Reduced Graph: Graph with 450 nodes and 9803 edges
+Instance: le450_5d.col
+Original Graph: Graph with 450 nodes and 9757 edges
+Reduced Graph: Graph with 450 nodes and 9757 edges
+Edges removed (relative to all altered graphs): 0.36937365087711477
+Nodes removed (relative to all altered graphs): 0.46926028430308037
+Edges removed (relative to all graphs): 0.23900647997930957
+Nodes removed (relative to all graphs): 0.3036390074902285
+Number of altered graphs: 11
