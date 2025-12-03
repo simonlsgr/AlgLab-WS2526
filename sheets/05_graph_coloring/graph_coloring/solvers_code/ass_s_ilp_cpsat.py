@@ -93,12 +93,15 @@ class ASS_S_ILPSolverCPSat(GCSolver):
         #     for color in range(self.number_of_colors):
         #         used_colors_in_node += self.solver.Value(self.graph.nodes[node][color])
         #     assert (used_colors_in_node == 1)
-            
+        
+        
+        self.lower_bound = None
         if cp_status in [CPFEASIBLE, CPOPTIMAL]:
             self.bound = used_colors
             self.generate_graph()
             if cp_status == CPFEASIBLE:
                 self.status = ModelStatus.FEASIBLE        
+                self.lower_bound = self.solver.BestObjectiveBound()
             elif cp_status == CPOPTIMAL:
                 self.status = ModelStatus.OPTIMAL
         else:
@@ -107,7 +110,7 @@ class ASS_S_ILPSolverCPSat(GCSolver):
         
         
         
-        return Solution(graph=self.graph, colors=self.bound, status=self.status)
+        return Solution(graph=self.graph, colors=self.bound, status=self.status, lower_bound=self.lower_bound)
         
         
             

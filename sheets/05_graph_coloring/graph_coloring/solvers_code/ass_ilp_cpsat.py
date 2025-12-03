@@ -24,7 +24,7 @@ class ASSILPSolverCPSat(GCSolver):
         for node in self.nodes:
             self.graph.nodes[node]["color"] = -1
             
-        self.bound = -1
+        self.upper_bound = -1
         self.model = CpModel()
         
         # create a decision variable for every node-color combination
@@ -88,20 +88,23 @@ class ASSILPSolverCPSat(GCSolver):
         #         used_colors_in_node += self.solver.Value(self.graph.nodes[node][color])
         #     assert (used_colors_in_node == 1)
             
+        self.lower_bound = None
         if cp_status in [CPFEASIBLE, CPOPTIMAL]:
-            self.bound = used_colors
+            self.upper_bound = used_colors
             self.generate_graph()
             if cp_status == CPFEASIBLE:
                 self.status = ModelStatus.FEASIBLE        
+                self.lower_bound = self.solver.BestObjectiveBound()
             elif cp_status == CPOPTIMAL:
                 self.status = ModelStatus.OPTIMAL
+                self.lower_bound = self.upper_bound
         else:
-            self.bound = math.inf
+            self.upper_bound = math.inf
             self.graph = nx.Graph()
         
         
         
-        return Solution(graph=self.graph, colors=self.bound, status=self.status)
+        return Solution(graph=self.graph, colors=self.upper_bound, status=self.status, lower_bound=self.lower_bound)
         
         
             

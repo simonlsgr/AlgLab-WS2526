@@ -67,5 +67,5 @@ class DegreeBasedPreprocessor:
                         self.graph.nodes[node]["color"] = i
                         break
         
-        return Solution(graph=self.graph, colors=solution.colors, status=solution.status)
+        return Solution(graph=self.graph, colors=solution.colors, status=solution.status, lower_bound=solution.lower_bound)
         

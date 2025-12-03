@@ -97,13 +97,14 @@ class REPILPSolverGurobi(GCSolver):
         if gp_status == gp.GRB.OPTIMAL or self.model.SolCount > 0:
             self.bound = used_colors
             self.generate_graph()
-            if self.model.SolCount > 0:
-                self.status = ModelStatus.FEASIBLE
-            elif gp_status == gp.GRB.OPTIMAL:
+            self.lower_bound = self.model.objBound
+            if gp_status == gp.GRB.OPTIMAL:
                 self.status = ModelStatus.OPTIMAL
+            elif self.model.SolCount > 0:
+                self.status = ModelStatus.FEASIBLE
         else:
             self.bound = math.inf
             self.graph = nx.Graph()
         
-        return Solution(graph=self.graph, colors=self.bound, status=self.status)
+        return Solution(graph=self.graph, colors=self.bound, status=self.status, lower_bound=self.lower_bound)
         

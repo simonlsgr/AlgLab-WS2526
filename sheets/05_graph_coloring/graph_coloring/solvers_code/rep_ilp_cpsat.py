@@ -90,17 +90,18 @@ class REPILPSolverCPSat(GCSolver):
             
         
         
-        
+        self.lower_bound = None
         if cp_status in [CPFEASIBLE, CPOPTIMAL]:
             self.bound = used_colors
             self.generate_graph()
             if cp_status == CPFEASIBLE:
                 self.status = ModelStatus.FEASIBLE        
+                self.lower_bound = self.solver.BestObjectiveBound()
             elif cp_status == CPOPTIMAL:
                 self.status = ModelStatus.OPTIMAL
         else:
             self.bound = math.inf
             self.graph = nx.Graph()
         
-        return Solution(graph=self.graph, colors=self.bound, status=self.status)
+        return Solution(graph=self.graph, colors=self.bound, status=self.status, lower_bound=self.lower_bound)
         

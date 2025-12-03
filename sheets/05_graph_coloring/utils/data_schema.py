@@ -28,6 +28,7 @@ class Solution(BaseModel):
     graph: Graph
     colors: int | float
     status: ModelStatus
+    lower_bound: int | None | float
     
     class Config:
         arbitrary_types_allowed = True

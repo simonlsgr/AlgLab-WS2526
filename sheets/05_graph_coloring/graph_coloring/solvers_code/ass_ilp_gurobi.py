@@ -23,7 +23,7 @@ class ASSILPSolverGurobi(GCSolver):
         for node in self.nodes:
             self.graph.nodes[node]["color"] = -1
             
-        self.bound = -1
+        self.upper_bound = -1
         
         self.model = gp.Model()
         self.solution = None
@@ -93,19 +93,22 @@ class ASSILPSolverGurobi(GCSolver):
         #     assert (used_colors_in_node == 1)
             
         
-        
+        self.lower_bound = None
         gp_status = self.model.Status
         if gp_status == gp.GRB.OPTIMAL or self.model.SolCount > 0:
-            self.bound = used_colors
+            self.upper_bound = used_colors
             self.generate_graph()
-            if self.model.SolCount > 0:
-                self.status = ModelStatus.FEASIBLE
-            elif gp_status == gp.GRB.OPTIMAL:
+            self.lower_bound = self.model.objBound
+            if gp_status == gp.GRB.OPTIMAL:
                 self.status = ModelStatus.OPTIMAL
+            elif self.model.SolCount > 0:
+                self.status = ModelStatus.FEASIBLE
+                
         else:
-            self.bound = math.inf
+            self.upper_bound = math.inf
+            self.lower_bound = -math.inf
             self.graph = nx.Graph()
         
-        return Solution(graph=self.graph, colors=self.bound, status=self.status)
+        return Solution(graph=self.graph, colors=self.upper_bound, status=self.status, lower_bound=self.lower_bound)
         
         

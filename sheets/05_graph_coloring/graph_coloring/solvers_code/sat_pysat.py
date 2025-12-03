@@ -125,7 +125,7 @@ class PYSATSolver(GCSolver):
             self.status = ModelStatus.OTHER
             
         
-        return Solution(graph=self.graph, colors=self.bound, status=self.status)
+        return Solution(graph=self.graph, colors=self.bound, status=self.status, lower_bound=None)
         
         
                 
